@@ -19,28 +19,28 @@ Finding the optimal block decomposition of the dynamic model...
                                  and 9 feedback variable(s).
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
-dynare_solve: starting value results in complex values. Randomize initial guess...
+dynare_solve: starting value results in nonfinite/NaN value. Randomize initial guess...
 
 
 Residuals of the static equations:
-Equation number  1: 1     : real:       0.000000, imaginary: 0
-Equation number  2: I     : real:       0.100000, imaginary: 0
-Equation number  3: C     : real:            Inf, imaginary: 0
-Equation number  4: r_f   : real:       0.000000, imaginary: 0
-Equation number  5: C_G   : real:       0.000000, imaginary: 0
-Equation number  6: C_NG  : real:       0.000000, imaginary: 0
-Equation number  7: P     : real:      19.812251, imaginary: 0
-Equation number  8: Y_G   : real:       0.000000, imaginary: 0
-Equation number  9: Y_NG  : real:       0.000000, imaginary: 0
-Equation number 10: pi_G  : real:       0.000000, imaginary: 0
-Equation number 11: pi_NG : real:       0.000000, imaginary: 0
-Equation number 12: P_G   : real:       0.000000, imaginary: 0
-Equation number 13: P_NG  : real:      -3.548098, imaginary: 0
-Equation number 14: K_G   : real:       7.215770, imaginary: -3.50482
-Equation number 15: K_NG  : real:       8.465766, imaginary: -23.5413
-Equation number 16: a     : real:       2.399856, imaginary: -10.5145
-Equation number 17: 17    : real:       5.373156, imaginary: -23.5413
-Equation number 18: 18    : real:       0.000000, imaginary: 0
-Equation number 19: D     : real:       0.000000, imaginary: 0
+Equation number  1: 1     :      -0.040531
+Equation number  2: I     :       9.048350
+Equation number  3: C     :       8.859615
+Equation number  4: r_f   :       0.010743
+Equation number  5: C_G   :    -191.498663
+Equation number  6: C_NG  : -365636.095541
+Equation number  7: P     :       8.268625
+Equation number  8: Y_G   :       0.154978
+Equation number  9: Y_NG  :       0.022375
+Equation number 10: pi_G  :       7.869420
+Equation number 11: pi_NG :       1.429326
+Equation number 12: P_G   :       0.303073
+Equation number 13: P_NG  :       0.052776
+Equation number 14: K_G   :       0.013956
+Equation number 15: K_NG  :       0.054688
+Equation number 16: a     :      -0.049289
+Equation number 17: 17    :       0.020243
+Equation number 18: 18    :       0.000000
+Equation number 19: D     :     -23.243435
 
 
