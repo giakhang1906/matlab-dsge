@@ -1,0 +1,18 @@
+function [ys, params, check] = rbc_steadystate_helper(ys, exo, M_, options_)
+
+% Inputs: 
+%   - ys        [vector] vector of initial values for the steady state of the endogenous variables
+%   - exo       [vector] vector of values for the exogenous variables
+%   - M_        [structure] Dynare model structure
+%   - options   [structure] Dynare options structure
+%
+% Output: 
+%   - ys        [vector] vector of steady state values for the the endogenous variables
+%   - params    [vector] vector of parameter values
+%   - check     [scalar] 0 if steady state computation worked and to
+%                        1 of not (allows to impose restrictions on parameters)
+
+%% Step 0: initialize indicator and set options for numerical solver
+check = 0;
+options = optimset('Display','Final','TolX',1e-10,'TolFun',1e-10);
+
