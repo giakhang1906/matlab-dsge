@@ -1,4 +1,4 @@
-function [ys, params, check] = rbc_steadystate_helper(ys, exo, M_, options_)
+function [ys,params,check] = dsge_steadystate(ys,exo,M_,options_)
 
 % Inputs: 
 %   - ys        [vector] vector of initial values for the steady state of the endogenous variables

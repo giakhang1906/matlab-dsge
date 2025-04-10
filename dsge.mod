@@ -154,6 +154,6 @@ stderr 0.01;
 
 end;
 
-stoch_simul(order=4, irf=20);
+%stoch_simul(order=4, irf=20);
  
           

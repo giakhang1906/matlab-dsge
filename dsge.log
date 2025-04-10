@@ -10,37 +10,37 @@ Finding the optimal block decomposition of the static model...
   2 recursive block(s) and 1 simultaneous block(s).
   the largest simultaneous block has 10 equation(s)
                                  and 10 feedback variable(s).
-Computing dynamic model derivatives (order 4).
+Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
 Finding the optimal block decomposition of the dynamic model...
 3 block(s) found:
   2 recursive block(s) and 1 simultaneous block(s).
   the largest simultaneous block has 13 equation(s)
-                                 and 9 feedback variable(s).
+                                 and 11 feedback variable(s).
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
 dynare_solve: starting value results in nonfinite/NaN value. Randomize initial guess...
 
 
 Residuals of the static equations:
-Equation number  1: 1     :      -0.040531
-Equation number  2: I     :       9.048350
-Equation number  3: C     :       8.859615
-Equation number  4: r_f   :       0.010743
-Equation number  5: C_G   :    -191.498663
-Equation number  6: C_NG  : -365636.095541
-Equation number  7: P     :       8.268625
-Equation number  8: Y_G   :       0.154978
-Equation number  9: Y_NG  :       0.022375
-Equation number 10: pi_G  :       7.869420
-Equation number 11: pi_NG :       1.429326
-Equation number 12: P_G   :       0.303073
-Equation number 13: P_NG  :       0.052776
-Equation number 14: K_G   :       0.013956
-Equation number 15: K_NG  :       0.054688
-Equation number 16: a     :      -0.049289
-Equation number 17: 17    :       0.020243
-Equation number 18: 18    :       0.000000
-Equation number 19: D     :     -23.243435
+Equation number  1: 1     :     -44.719519
+Equation number  2: I     :       9.026173
+Equation number  3: C     :       3.790422
+Equation number  4: r_f   :      -5.348188
+Equation number  5: C_G   :     -35.351791
+Equation number  6: C_NG  :      -7.259914
+Equation number  7: P     :     -67.689528
+Equation number  8: Y_G   :       8.428829
+Equation number  9: Y_NG  :       7.671410
+Equation number 10: pi_G  :     -39.076101
+Equation number 11: pi_NG :     -63.533331
+Equation number 12: P_G   :       6.241640
+Equation number 13: P_NG  :      10.183183
+Equation number 14: K_G   :       1.321547
+Equation number 15: K_NG  :       6.084940
+Equation number 16: a     :       1.241995
+Equation number 17: 17    :     -13.949789
+Equation number 18: 18    :      -0.000004
+Equation number 19: D     :     -12.505309
 
 

@@ -1,5 +1,5 @@
 function [residual, g1, g2, g3] = dynamic(y, x, params, steady_state, it_)
-    T = NaN(226, 1);
+    T = NaN(64, 1);
     if nargout <= 1
         residual = dsge.dynamic_resid(T, y, x, params, steady_state, it_, true);
     elseif nargout == 2
