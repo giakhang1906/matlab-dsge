@@ -84,13 +84,29 @@ if C_NG <=0
 end
 
 K_NG = ((r_f) / (A_NG * gamma_NG * 1))^(1 / (gamma_NG - 1));
-P_NG = (phi / (phi - 1)) * (r_f / (gamma_NG * A_NG^(1/gamma_NG) * K_NG^(1 - 1/gamma_NG)));
+if K_NG <=0
+    check = 1; %set failure indicator 
+    return; % return without updating steady states
+end
+
 K_G = (((1 - theta) * r) / (A_G * gamma_G * 1))^(1 / (gamma_G - 1));
-P_G = (phi / (phi - 1)) * (((1 - theta) * r) / (gamma_G * (Y_G / K_G)));
-C_G = ((P_G / P)^(-psi)) * (1/alpha_G) * C;
-C_NG = ((P_NG / P)^(-psi)) * (1/(1 - alpha_G)) * C;
+if K_G <=0
+    check = 1; %set failure indicator 
+    return; % return without updating steady states
+end
+
 pi_G = P_G * Y_G - (1 - theta) * r * K_G;
 pi_NG = P_NG * Y_NG - r_f * K_NG;
 D = T_v * P * C + T_c * (pi_G + pi_NG) - theta * r * K_G;
 
-end; 
+end
+
+%% Step 3: Update parameters and variables
+params=NaN(M_.param_nbr,1);
+for iter = 1:M_.param_nbr %update parameters set in the file
+  eval([ 'params(' num2str(iter) ') = ' M_.param_names{iter} ';' ])
+end
+
+for ii = 1:M_.orig_endo_nbr %auxiliary variables are set automatically
+  eval(['ys(' int2str(ii) ') = ' M_.endo_names{ii} ';']);
+end
