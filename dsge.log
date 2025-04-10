@@ -1,0 +1,46 @@
+Starting Dynare (version 6.3).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 19 equation(s).
+Evaluating expressions...
+Computing static model derivatives (order 1).
+Normalizing the static model...
+Finding the optimal block decomposition of the static model...
+3 block(s) found:
+  2 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 10 equation(s)
+                                 and 10 feedback variable(s).
+Computing dynamic model derivatives (order 4).
+Normalizing the dynamic model...
+Finding the optimal block decomposition of the dynamic model...
+3 block(s) found:
+  2 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 13 equation(s)
+                                 and 9 feedback variable(s).
+Preprocessing completed.
+Preprocessing time: 0h00m00s.
+dynare_solve: starting value results in complex values. Randomize initial guess...
+
+
+Residuals of the static equations:
+Equation number  1: 1     : real:       0.000000, imaginary: 0
+Equation number  2: I     : real:       0.100000, imaginary: 0
+Equation number  3: C     : real:            Inf, imaginary: 0
+Equation number  4: r_f   : real:       0.000000, imaginary: 0
+Equation number  5: C_G   : real:       0.000000, imaginary: 0
+Equation number  6: C_NG  : real:       0.000000, imaginary: 0
+Equation number  7: P     : real:      19.812251, imaginary: 0
+Equation number  8: Y_G   : real:       0.000000, imaginary: 0
+Equation number  9: Y_NG  : real:       0.000000, imaginary: 0
+Equation number 10: pi_G  : real:       0.000000, imaginary: 0
+Equation number 11: pi_NG : real:       0.000000, imaginary: 0
+Equation number 12: P_G   : real:       0.000000, imaginary: 0
+Equation number 13: P_NG  : real:      -3.548098, imaginary: 0
+Equation number 14: K_G   : real:       7.215770, imaginary: -3.50482
+Equation number 15: K_NG  : real:       8.465766, imaginary: -23.5413
+Equation number 16: a     : real:       2.399856, imaginary: -10.5145
+Equation number 17: 17    : real:       5.373156, imaginary: -23.5413
+Equation number 18: 18    : real:       0.000000, imaginary: 0
+Equation number 19: D     : real:       0.000000, imaginary: 0
+
+
