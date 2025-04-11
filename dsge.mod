@@ -62,7 +62,8 @@ pi_G = P_G * Y_G - (1 - theta) * r * K_G;
 pi_NG = P_NG * Y_NG - r_f * K_NG;
 
 % Green Price 
-P_G = (phi / (phi - 1)) * (((1 - theta) * r) / (gamma_G * (Y_G / K_G))); 
+P_G = (phi / (
+phi - 1)) * (((1 - theta) * r) / (gamma_G * (Y_G / K_G))); 
 
 %Non-green Price
 P_NG = (phi / (phi - 1)) * (r_f / (gamma_NG * (Y_NG / K_NG)));
@@ -89,59 +90,41 @@ D = T_v * P * C + T_c * (pi_G + pi_NG) - theta * r * K_G;
 
 end;
 
-% initval;   %initial values of endogenous variables for non-linear solver, 
-%             % choose the steady-state value
-% A_G = 1;
-% r = 1/beta - 1 + delta; 
-% %r = 0.5;
-% %r_f = 0.5;
-% r_f = 1/beta - 1 + delta; 
-% w = 1/3; %calibrated share of risky asset
-% P = 1; 
-% 
-% C = a * ((r_f - delta) / (1 + T_v));
-% 
-% a = I / delta;
-% 
-% I = C * (delta * (1 + T_v)) / (r_f - delta);
-% 
-% Y_G = (((r_f - delta) / (1 + T_v) + delta) - (Y_NG / a)) * a; 
-% 
-% P_G = (a * w * (1 - theta) * r) / Y_G; 
-% 
-% Y_NG = ((1 - w) * r_f * a) / P_NG; 
-% 
-% P_NG = ((1 - alpha_G) * (1 - (1/alpha_G) * (P_G)^(1-phi)))^(1 / (1 - phi));
-% 
-% C_G = ((P_G / P)^(-psi)) * (1/alpha_G) * C; 
-% 
-% C_NG = ((P_NG / P)^(-psi)) * (1/(1 - alpha_G)) * C;
-% 
-% %lambda = C^(-psi) / ((1 + T_v) * P);
-% 
-% %K_G = (((1 - theta) * r)/ (A_G * gamma_G * P_G))^(1 / (gamma_G - 1));
-% 
-% %K_NG = (r_f / (A_NG * gamma_NG * P_NG))^(1 / (gamma_NG - 1));
-% 
-% %pi_G = P_G * Y_G - (1-theta) * r * K_G;
-% 
-% %pi_NG = P_NG * Y_NG - r_f * K_NG;
-% 
-% %D = T_v * P * C + T_c * (pi_G + pi_NG) - theta * r * K_G;
-% 
-% K_NG = ((r_f) / (A_NG * gamma_NG * 1))^(1 / (gamma_NG - 1));
-% %Y_NG = A_NG * (K_NG)^gamma_NG;
-% %P_NG = (phi / (phi - 1)) * (r_f / (gamma_NG * A_NG^(1/gamma_NG) * K_NG^(1 - 1/gamma_NG)));
-% K_G = (((1 - theta) * r) / (A_G * gamma_G * 1))^(1 / (gamma_G - 1));
-% %Y_G = A_G * (K_G)^gamma_G;
-% %P_G = (phi / (phi - 1)) * (((1 - theta) * r) / (gamma_G * (Y_G / K_G)));
-% %C_G = ((P_G / P)^(-psi)) * (1/alpha_G) * C;
-% %C_NG = ((P_NG / P)^(-psi)) * (1/(1 - alpha_G)) * C;
-% pi_G = P_G * Y_G - (1 - theta) * r * K_G;
-% pi_NG = P_NG * Y_NG - r_f * K_NG;
-% D = T_v * P * C + T_c * (pi_G + pi_NG) - theta * r * K_G;
-% 
-% end; 
+% Steady-state model block
+steady_state_model;
+    r = 1/beta - 1 + delta;
+    r_f = 1/beta - 1 + delta;
+    P = 1;
+
+    C_a = (r_f - delta) / (1 + T_v) * P;
+    I_a = delta;
+    YG_a = (w * (1-theta) * r) / P_G;
+    YNG_a = ((1 - w) * r_f) / P_NG;
+    P = ((1 / alpha_G) * (P_G^(1 - phi)) + (1 / (1 - alpha_G)) * (P_NG^(1-phi)))^(1 / (1-phi));
+
+    % Solve for a (manually using fixed-point iteration)
+    a = 4; % Initial guess
+    for a = 1:100
+        a_new = ((((1-theta) * r) / (A_G * gamma_G * P_G))^(1 / (gamma_G - 1))) / w;
+        if abs(a_new - a) < 1e-10
+            break;
+        end
+        a = a_new;
+    end
+
+    % Compute remaining variables
+    K_G = (YG_a * a)^(1/gamma_G);
+    K_NG = ((YNG_a * a) / A_NG)^(1/gamma_NG);
+    C = C_a * a;
+    I = I_a * a;
+    Y_G = YG_a * a;
+    Y_NG = YNG_a * a;
+    C_G = ((P_G / P)^(-phi)) * (1 / alpha_G) * C;
+    C_NG = ((P_NG / P)^(-phi)) * (1 / (1 - alpha_G)) * C;
+end;
+
+% Compute the steady state
+steady;
 
 steady;
 

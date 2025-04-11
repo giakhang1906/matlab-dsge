@@ -612,6 +612,7 @@ M_.params(11) = 0.4;
 T_c = M_.params(11);
 M_.params(12) = 1;
 A_NG = M_.params(12);
+options_.steadystate.nocheck = true;
 steady;
 options_resid_ = struct();
 display_static_residuals(M_, options_, oo_, options_resid_);

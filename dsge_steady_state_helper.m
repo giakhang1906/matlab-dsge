@@ -1,4 +1,4 @@
-function [ys,params,check] = dsge_steadystate_helper(ys,exo,M_,options_)
+function [ys,params,check] = dsge_steady_state_helper(ys,exo,M_,options_)
 % 
 % % Inputs: 
 % %   - ys        [vector] vector of initial values for the steady state of the endogenous variables
@@ -58,26 +58,19 @@ if any([P_G, P_NG] <= 0)
     return
 end
 
-(K_G)^(gamma_G) = YG_a * a; 
+K_G = (YG_a * a)^(1/gamma_G); 
 
 if K_G <= 0
     check = 1;
     return 
 end
 
-(K_NG)^(gamma_NG) = (YNG_a * a) / A_NG;
+K_NG = ((YNG_a * a) / A_NG)^(1/ gamma_NG) ;
 
 if K_NG <= 0
     check = 1;
     return
 end
-
-C = C_a * a; %Consumption
-I = I_a * a; %Investment 
-Y_G = YG_a * a; %Green Output
-Y_NG = YNG_a * a; %Non-green Output 
-C_G = ((P_G / P)^(-phi)) * (1 / alpha_G) * C; %Green Consumption
-C_NG = ((P_NG / P)^(-phi)) * (1 / (1 - alpha_G)) * C; %Non-green Consumption
 
 % Asset fsolve
 a0 = 4;
@@ -86,6 +79,13 @@ a0 = 4;
         check = 1; % set failure indicator
         return     % return without updating steady states
     end
+
+C = C_a * a; %Consumption
+I = I_a * a; %Investment 
+Y_G = YG_a * a; %Green Output
+Y_NG = YNG_a * a; %Non-green Output 
+C_G = ((P_G / P)^(-phi)) * (1 / alpha_G) * C; %Green Consumption
+C_NG = ((P_NG / P)^(-phi)) * (1 / (1 - alpha_G)) * C; %Non-green Consumption
 
  
 % Step 3: Update parameters and variables
