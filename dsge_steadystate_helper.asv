@@ -80,20 +80,15 @@ C_G = ((P_G / P)^(-phi)) * (1 / alpha_G) * C; %Green Consumption
 C_NG = ((P_NG / P)^(-phi)) * (1 / (1 - alpha_G)) * C; %Non-green Consumption
 
 % Asset fsolve
-a0 = 4;
-[a,~,exitflag] = fsolve(@(a) a - ((((1-theta) * r)/ (A_G * gamma_G * P_G))^(1 / (gamma_G - 1))) / w, a0,options);
-    if exitflag <= 0
-        check = 1; % set failure indicator
-        return     % return without updating steady states
-    end
+a = 
 
  
-% Step 3: Update parameters and variables
-  params=NaN(M_.param_nbr,1);
-  for iter = 1:M_.param_nbr %update parameters set in the file
-    eval([ 'params(' num2str(iter) ') = ' M_.param_names{iter} ';' ])
-  end
+% %% Step 3: Update parameters and variables
+% params=NaN(M_.param_nbr,1);
+% for iter = 1:M_.param_nbr %update parameters set in the file
+%   eval([ 'params(' num2str(iter) ') = ' M_.param_names{iter} ';' ])
+% end
 % 
-  for ii = 1:M_.orig_endo_nbr %auxiliary variables are set automatically
-    eval(['ys(' int2str(ii) ') = ' M_.endo_names{ii} ';']);
-  end
+% for ii = 1:M_.orig_endo_nbr %auxiliary variables are set automatically
+%   eval(['ys(' int2str(ii) ') = ' M_.endo_names{ii} ';']);
+% end
