@@ -1,5 +1,45 @@
 Starting Dynare (version 6.3).
 Calling Dynare with arguments: none
 Starting preprocessing of the model file ...
-ERROR: dsge.mod: line 107, col 9: syntax error, unexpected NAME, expecting EQUAL
+Found 19 equation(s).
+Evaluating expressions...
+Computing static model derivatives (order 1).
+Normalizing the static model...
+Finding the optimal block decomposition of the static model...
+13 block(s) found:
+  10 recursive block(s) and 3 simultaneous block(s).
+  the largest simultaneous block has 3 equation(s)
+                                 and 3 feedback variable(s).
+Computing dynamic model derivatives (order 2).
+Normalizing the dynamic model...
+Finding the optimal block decomposition of the dynamic model...
+6 block(s) found:
+  5 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 13 equation(s)
+                                 and 8 feedback variable(s).
+Preprocessing completed.
 Preprocessing time: 0h00m00s.
+
+
+Residuals of the static equations:
+Equation number  1: 1     :       0.000000
+Equation number  2: 2     :      -0.183673
+Equation number  3: r     :       0.000000
+Equation number  4: 4     :      -0.400000
+Equation number  5: 5     :      -0.400000
+Equation number  6: P     :       1.000000
+Equation number  7: a     :       0.000000
+Equation number  8: Y_G   :       0.000000
+Equation number  9: Y_NG  :       0.000000
+Equation number 10: pi_G  :            NaN
+Equation number 11: pi_NG :       0.000000
+Equation number 12: 12    :       0.000000
+Equation number 13: 13    :       0.000000
+Equation number 14: K_G   :       0.000000
+Equation number 15: K_NG  :       0.000000
+Equation number 16: 16    :      -0.333333
+Equation number 17: 17    :      -0.166667
+Equation number 18: A_G   :       0.000000
+Equation number 19: 19    :      -0.099595
+
+

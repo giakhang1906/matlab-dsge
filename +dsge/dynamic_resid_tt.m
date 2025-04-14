@@ -18,25 +18,23 @@ function T = dynamic_resid_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 18);
+assert(length(T) >= 16);
 
-T(1) = y(21)^(-params(2));
-T(2) = T(1)/((1+params(10))*y(14));
-T(3) = y(2)^(-params(2));
-T(4) = T(3)/((1+params(10))*y(14));
-T(5) = params(1)*T(2)/T(4);
-T(6) = 1-params(5)+y(25)+y(23)*(y(24)-y(25));
-T(7) = 1/params(4);
-T(8) = (y(15)/y(14))^(-params(2))*T(7);
-T(9) = 1/(1-params(4));
-T(10) = (y(16)/y(14))^(-params(2))*T(9);
-T(11) = T(7)*y(15)^(1-params(3))+T(9)*y(16)^(1-params(3));
-T(12) = y(12)^params(6);
-T(13) = params(3)/(params(3)-1);
-T(14) = params(6)*y(10)/y(12);
-T(15) = params(7)*y(11)/y(13);
-T(16) = y(6)*(1-params(8))/(y(15)*y(20)*params(6));
-T(17) = T(16)^(1/(params(6)-1));
-T(18) = (y(7)/(y(16)*params(12)*params(7)))^(1/(params(7)-1));
+T(1) = params(5)+1/params(1)-1;
+T(2) = (0.5/params(4))^(1/(1-params(3)));
+T(3) = T(1)*(1-params(8))/(y(20)*params(6)*T(2));
+T(4) = 1/(params(6)-1);
+T(5) = T(3)^T(4);
+T(6) = T(1)*(1-params(8))*T(5);
+T(7) = y(6)+y(12)+params(3)*(y(15)+y(10))/(y(20)*params(6)*(params(3)-1));
+T(8) = (0.5/(1-params(4)))^(1/(1-params(3)));
+T(9) = 1/(params(7)-1);
+T(10) = (T(1)/(params(7)*params(12)*T(8)))^T(9);
+T(11) = params(10)*(y(2)+y(14))*(y(7)-params(5))/(1+params(10));
+T(12) = 1/y(5);
+T(13) = (T(10))^params(6);
+T(14) = (T(10))^params(7);
+T(15) = params(10)*(y(7)-params(5))/(1+params(10));
+T(16) = T(10)*T(12)*T(15);
 
 end

@@ -21,113 +21,95 @@ A_NG = 1;
 
 model;
 
-%% Marginal Utility of Consumption
-%lambda = C^(-psi) / ((1 + T_v) * P);
+%%Euler equation
+C(+1) - C = (1 - beta*(1 - delta)) * r(+1); 
 
-%% Euler equation
-%1 = beta * (lambda(+1)/lambda) * (1 - delta + r_f(+1) + w(+1) * (r(+1) - r_f(+1)));
-1 = beta * ((C(+1)^(-psi) / ((1 + T_v) * P))/(C^(-psi) / ((1 + T_v) * P))) * (1 - delta + r_f(+1) + w(+1) * (r(+1) - r_f(+1)));
+%% Budget Constraint 
+((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)); 
 
-%% Law of Motion 
-I = a(+1) - (1 - delta) * a;
+%% Rate of return 
+r = r_f; 
 
-% Budget Constraint 
-C = (a * (r_f + w * (r - r_f)) - I) / ((1 + T_v) * P);
+% Consumption green 
+C_G - C = -phi * (P_G - P); 
 
-% Marginal Utility of share of risky asset
-%0 = -lambda(+1) * beta * a(+1) * (r(+1) - r_f(+1));
-%0 = -lambda * beta * a * (r - r_f);
-%r_f(+1) = r(+1);
-r_f = r;
+% Consumption non-green 
+C_NG - C = -phi * (P_NG - P); 
 
-%% Share of Green Consumption
-C_G = ((P_G / P)^(-psi)) * (1/alpha_G) * C; 
+%% Aggregate price 
+P = 1/2 * P_G + 1/2 * P_NG; 
 
-%% Intratemporal Condition (share of non-green consumption)
-C_NG = ((P_NG / P)^(-psi)) * (1/(1 - alpha_G)) * C;
+% Law of Motion for Capital
+a(+1) = delta * I + (1-delta) * a; 
 
-% General Price index
-P = ((1 / alpha_G) * ((P_G)^(1 - phi)) + (1 / (1 - alpha_G)) * ((P_NG)^(1-phi)))^(1 / (1-phi));
+% Production Function Green 
+Y_G = A_G + gamma_G * K_G; 
 
-%% Production Function Green
-Y_G = A_G * (K_G)^(gamma_G);
+% Production Function Non-green 
+Y_NG = gamma_NG * K_NG; 
 
-%% Production Function Non-green
-Y_NG = A_NG * (K_NG)^(gamma_NG);
+% Profit Green Firm
+pi_G = (1 - theta) * ((1/beta) - 1 + delta) * 
+((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1))) * 
+(r + K_G + ((phi * (P_G + Y_G)) / ((phi-1) * gamma_G * A_G))); 
 
-%% Profit Green 
-pi_G = P_G * Y_G - (1 - theta) * r * K_G;
+% Profit Non-green Firm
+pi_NG = ((1/beta) - 1 + delta) * 
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
+(r_f + K_G + ((phi * (P_NG + Y_NG)) / ((phi-1) * gamma_NG * A_NG)));
 
-%% Profit Non-green
-pi_NG = P_NG * Y_NG - r_f * K_NG;
+% Price Green 
+P_G + Y_G = K_G + r; 
 
-% Green Price 
-P_G = (phi / (
-phi - 1)) * (((1 - theta) * r) / (gamma_G * (Y_G / K_G))); 
+% Price non-green
+P_NG + Y_NG = K_NG + r_f; 
 
-%Non-green Price
-P_NG = (phi / (phi - 1)) * (r_f / (gamma_NG * (Y_NG / K_NG)));
+% MPK = Rate of return green 
+K_G = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
 
-%% MPK = r/p
-K_G = (((1 - theta) * r)/ (A_G * gamma_G * P_G))^(1 / (gamma_G - 1));
+%MPK = Rate of return non-green
+K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
-%% MPK = r/p
-K_NG = (r_f / (A_NG * gamma_NG * P_NG))^(1 / (gamma_NG - 1));
+% Capital supply = Capital demand 
+K_G = w + a; 
 
-% Green Capital demand = Capital supply
-%w = ((((1 - theta) * r)/ (A_G * gamma_G * P_G))^(1 / (gamma_G - 1))) / a;
-a = ((((1 - theta) * r)/ (A_G * gamma_G * P_G))^(1 / (gamma_G - 1))) / w;
+% Capital supply = capital demand 
+K_NG = 1/2 * w + a; 
 
-% Non-green Capital demand = Capital supply
-%1 = (((r_f / (A_NG * gamma_NG * P_NG))^(1 / (gamma_NG - 1))) / a) + w;
-a = ((r_f / (A_NG * gamma_NG * P_NG))^(1 / (gamma_NG - 1))) + w*a;
+% Productivity
+A_G = rho * A_G(-1) + EPS_G;
 
-%% Productivity of Green Firm
-log(A_G) = rho * log(A_G(-1)) + EPS_G;
-
-%% Government Budget Constraint
-D = T_v * P * C + T_c * (pi_G + pi_NG) - theta * r * K_G;
+% Government Deficit 
+T_v * (P + C) * ((r_f - delta) / (1 + T_v)) * (1/w) * 
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) +
+T_c * (pi_G * (((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))^gamma_G) * 
+(0.5 / alpha_G)^(1/(1-phi)) - (1-theta) * ((1/beta) - 1 + delta) * 
+((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1)))
+ + pi_NG * A_NG * ((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))^(gamma_NG) * 
+((0.5) / (1 - alpha_G))^(1/(1-phi)) - ((1/beta) - 1 + delta) * 
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))) = theta * (r + K_G) * ((1/beta) - 1 + delta) * 
+((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1))) + 
+D * 
+(T_v * ((r_f - delta) / (1 + T_v)) * (1/w) * 
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) + 
+T_c * ((((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))^gamma_G) * 
+(0.5 / alpha_G)^(1/(1-phi)) - (1-theta) * ((1/beta) - 1 + delta) * 
+((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1))) + 
+A_NG * ((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))^(gamma_NG) * 
+((0.5) / (1 - alpha_G))^(1/(1-phi)) - ((1/beta) - 1 + delta) * 
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1)))) - theta * ((1/beta) - 1 + delta) * 
+((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1))));
 
 end;
 
-% Steady-state model block
-steady_state_model;
-    r = 1/beta - 1 + delta;
-    r_f = 1/beta - 1 + delta;
-    P = 1;
+initval; 
+w = 1/3; 
+P = 1; 
+A_G = 1; 
 
-    C_a = (r_f - delta) / (1 + T_v) * P;
-    I_a = delta;
-    YG_a = (w * (1-theta) * r) / P_G;
-    YNG_a = ((1 - w) * r_f) / P_NG;
-    P = ((1 / alpha_G) * (P_G^(1 - phi)) + (1 / (1 - alpha_G)) * (P_NG^(1-phi)))^(1 / (1-phi));
-
-    % Solve for a (manually using fixed-point iteration)
-    a = 4; % Initial guess
-    for a = 1:100
-        a_new = ((((1-theta) * r) / (A_G * gamma_G * P_G))^(1 / (gamma_G - 1))) / w;
-        if abs(a_new - a) < 1e-10
-            break;
-        end
-        a = a_new;
-    end
-
-    % Compute remaining variables
-    K_G = (YG_a * a)^(1/gamma_G);
-    K_NG = ((YNG_a * a) / A_NG)^(1/gamma_NG);
-    C = C_a * a;
-    I = I_a * a;
-    Y_G = YG_a * a;
-    Y_NG = YNG_a * a;
-    C_G = ((P_G / P)^(-phi)) * (1 / alpha_G) * C;
-    C_NG = ((P_NG / P)^(-phi)) * (1 / (1 - alpha_G)) * C;
 end;
 
-% Compute the steady state
 steady;
-
-steady;
-
 resid;
 
 shocks;
@@ -137,6 +119,6 @@ stderr 0.01;
 
 end;
 
-%stoch_simul(order=4, irf=20);
- 
+stoch_simul;
+
           
