@@ -653,22 +653,6 @@ options_.initval_file = false;
 oo_.steady_state(4) = 0.3333333333333333;
 oo_.steady_state(19) = 1;
 oo_.steady_state(13) = 1;
-oo_.steady_state(1) = 0;
-oo_.steady_state(2) = 0;
-oo_.steady_state(3) = 0;
-oo_.steady_state(5) = 0;
-oo_.steady_state(6) = 0;
-oo_.steady_state(7) = 0;
-oo_.steady_state(8) = 0;
-oo_.steady_state(9) = 0;
-oo_.steady_state(10) = 0;
-oo_.steady_state(11) = 0;
-oo_.steady_state(12) = 0;
-oo_.steady_state(14) = 0;
-oo_.steady_state(15) = 0;
-oo_.steady_state(16) = 0;
-oo_.steady_state(17) = 0;
-oo_.steady_state(18) = 0;
 if M_.exo_nbr > 0
 	oo_.exo_simul = ones(M_.maximum_lag,1)*oo_.exo_steady_state';
 end

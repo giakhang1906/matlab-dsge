@@ -50,14 +50,14 @@ Y_NG = gamma_NG * K_NG;
 
 % Profit Green Firm
 pi_G = (1 - theta) * ((1/beta) - 1 + delta) * 
-((((1 - theta) * ((1/beta) - 1 + delta))/ (A_G * gamma_G * (0.5 / alpha_G)^(1/(1-phi))))^(1 / (gamma_G - 1))) * 
-(r + K_G + (phi * (P_G + Y_G)) / ((phi - 1) * gamma_G * A_G));
+((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
+(- r - K_G + (phi * (P_G + Y_G)) / ((phi - 1) * gamma_G * A_G));
 %(r + K_G + ((phi * (P_G + Y_G)) / ((phi-1) * gamma_G * A_G))); 
 
 % Profit Non-green Firm
 pi_NG = ((1/beta) - 1 + delta) * 
-((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * ((0.5) / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
-(r_f + K_NG + (phi * (P_NG + Y_NG)) / ((phi - 1) * gamma_NG * A_NG));
+((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
+(- r_f - K_NG + (phi * (P_NG + Y_NG)) / ((phi - 1) * gamma_NG * A_NG));
 %(r_f + K_NG + ((phi * (P_NG + Y_NG)) / ((phi-1) * gamma_NG * A_NG)));
 
 % Price Green 
