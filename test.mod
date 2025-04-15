@@ -62,10 +62,12 @@ P_G + Y_G = K_G(-1) + r;
 P_NG + Y_NG = K_NG(-1) + r_f; 
 
 % MPK = Rate of return green 
-K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
+%K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
+K_G = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
 
 %MPK = Rate of return non-green
-K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
+%K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
+K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
 %K_G(-1) = STEADY_STATE(w) + a(-1); 
@@ -81,9 +83,13 @@ A_G = rho * A_G(-1) + EPS_G;
 % Government Deficit 
 D * (T_v * ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
 ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
- + T_c * ((1 - theta) * ((1/beta) - 1 + delta) * 
+
+ + T_c * ((1 - theta) * ((1/beta) - 1 + delta) *
+
 ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
+
 ((1/gamma_G) - 1) + ((1/beta) - 1 + delta) * 
+
 ((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
 ((1/gamma_NG) - 1)) - 
 theta * ((1/beta) - 1 + delta) * 
@@ -132,6 +138,7 @@ A_G = 1;
 P = 1; 
 end; 
 
+options_.debug = 1;
 steady;
 resid;
 

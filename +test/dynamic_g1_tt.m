@@ -22,6 +22,6 @@ assert(length(T) >= 12);
 
 T = test.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
-T(12) = (-(T(1)*(1-params(8))*params(6)*T(7)))/(y(22)*params(6)*T(7)*y(22)*params(6)*T(7))*getPowerDeriv(T(1)*(1-params(8))/(y(22)*params(6)*T(7)),T(5),1);
+T(12) = (-(T(1)*(1-params(8))*params(6)*T(7)))/(y(23)*params(6)*T(7)*y(23)*params(6)*T(7))*getPowerDeriv(T(1)*(1-params(8))/(y(23)*params(6)*T(7)),T(5),1);
 
 end

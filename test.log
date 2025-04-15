@@ -13,9 +13,10 @@ Finding the optimal block decomposition of the static model...
 Computing dynamic model derivatives (order 1).
 Normalizing the dynamic model...
 Normalization failed with cutoff, trying symbolic normalization...
-Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
+Could not normalize the dynamic model. Variable P is not in the maximum cardinality matching.
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
+DYNARE_SOLVE (solve_algo=2|4): number of blocks = 14
 
 STEADY-STATE RESULTS:
 
@@ -62,8 +63,13 @@ Equation number 18: A_G   :       0.000000
 Equation number 19: 19    :       0.000000
 
 
-[Warning: Problem in the model specification: some variables don't appear as current. Check whether this is desired.] 
-[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('check_model', '/Applications/Dynare/6.3-arm64/matlab/check_model.m', 23)" style="font-weight:bold">check_model</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/check_model.m',23,0)">line 23</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 91)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',91,0)">line 91</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m', 510)" style="font-weight:bold">test.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m',510,0)">line 510</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)] 
+
+STOCHASTIC_SOLVER: The Jacobian of the dynamic model contains NaN. The problem is associated with:
+
+
+Derivative of Equation 19 with respect to  Variable A_G  (initial value of A_G: 0) 
+
+STOCHASTIC_SOLVER:   The problem most often occurs, because a variable with
+STOCHASTIC_SOLVER:   exponent smaller than 0 has been initialized to 0. Taking the derivative
+STOCHASTIC_SOLVER:   and evaluating it at the steady state then results in a division by 0.
+STOCHASTIC_SOLVER:   If you are using model-local variables (# operator), check their values as well.

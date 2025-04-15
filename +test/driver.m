@@ -166,25 +166,25 @@ M_.orig_maximum_lag = 1;
 M_.orig_maximum_lead = 1;
 M_.orig_maximum_lag_with_diffs_expanded = 1;
 M_.lead_lag_incidence = [
- 0 5 23;
+ 0 5 24;
  0 6 0;
  1 7 0;
  0 8 0;
- 0 9 24;
+ 0 9 25;
  0 10 0;
  0 11 0;
  0 12 0;
  0 13 0;
  0 14 0;
  2 15 0;
- 3 0 0;
- 0 16 0;
+ 3 16 0;
  0 17 0;
  0 18 0;
  0 19 0;
  0 20 0;
  0 21 0;
- 4 22 0;]';
+ 0 22 0;
+ 4 23 0;]';
 M_.nstatic = 13;
 M_.nfwrd   = 2;
 M_.npred   = 4;
@@ -248,9 +248,9 @@ oo_.exo_steady_state = zeros(1, 1);
 M_.params = NaN(12, 1);
 M_.endo_trends = struct('deflator', cell(19, 1), 'log_deflator', cell(19, 1), 'growth_factor', cell(19, 1), 'log_growth_factor', cell(19, 1));
 M_.NNZDerivatives = [71; -1; -1; ];
-M_.dynamic_g1_sparse_rowval = int32([7 16 17 8 10 12 14 16 9 11 13 15 17 18 1 2 4 5 19 2 7 7 16 17 3 10 12 14 19 3 11 13 15 19 4 5 8 10 12 9 11 13 19 2 4 5 6 19 4 6 10 12 14 5 6 11 13 15 10 19 11 19 19 8 10 14 18 19 1 1 18 ]);
-M_.dynamic_g1_sparse_colval = int32([3 3 3 11 11 11 11 11 12 12 12 12 12 19 20 20 20 20 20 21 21 22 23 23 24 24 24 24 24 25 25 25 25 25 26 27 28 28 28 29 29 29 30 32 32 32 32 32 33 33 33 33 33 34 34 34 34 34 35 35 36 36 37 38 38 38 38 38 39 43 58 ]);
-M_.dynamic_g1_sparse_colptr = int32([1 1 1 4 4 4 4 4 4 4 4 9 14 14 14 14 14 14 14 15 20 22 23 25 30 35 36 37 40 43 44 44 49 54 59 61 63 64 69 70 70 70 70 71 71 71 71 71 71 71 71 71 71 71 71 71 71 71 72 ]);
+M_.dynamic_g1_sparse_rowval = int32([7 16 17 8 10 12 16 9 11 13 17 18 1 2 4 5 19 2 7 7 16 17 3 10 12 14 19 3 11 13 15 19 4 5 8 10 12 9 11 13 14 19 15 2 4 5 6 19 4 6 10 12 14 5 6 11 13 15 10 19 11 19 19 8 10 14 18 19 1 1 18 ]);
+M_.dynamic_g1_sparse_colval = int32([3 3 3 11 11 11 11 12 12 12 12 19 20 20 20 20 20 21 21 22 23 23 24 24 24 24 24 25 25 25 25 25 26 27 28 28 28 29 29 29 30 30 31 32 32 32 32 32 33 33 33 33 33 34 34 34 34 34 35 35 36 36 37 38 38 38 38 38 39 43 58 ]);
+M_.dynamic_g1_sparse_colptr = int32([1 1 1 4 4 4 4 4 4 4 4 8 12 12 12 12 12 12 12 13 18 20 21 23 28 33 34 35 38 41 43 44 49 54 59 61 63 64 69 70 70 70 70 71 71 71 71 71 71 71 71 71 71 71 71 71 71 71 72 ]);
 M_.lhs = {
 'C(1)-C'; 
 'C*(1/beta-1)/(delta+1/beta-1)+delta*(I-P)/(delta+1/beta-1)'; 
@@ -265,8 +265,8 @@ M_.lhs = {
 'pi_NG'; 
 'P_G+Y_G'; 
 'P_NG+Y_NG'; 
-'K_G(-1)'; 
-'K_NG(-1)'; 
+'K_G'; 
+'K_NG'; 
 'K_G(-1)'; 
 'K_NG(-1)'; 
 'A_G'; 
@@ -496,6 +496,7 @@ end
 if M_.exo_det_nbr > 0
 	oo_.exo_det_simul = ones(M_.maximum_lag,1)*oo_.exo_det_steady_state';
 end
+options_.debug = 1;
 steady;
 options_resid_ = struct();
 display_static_residuals(M_, options_, oo_, options_resid_);
