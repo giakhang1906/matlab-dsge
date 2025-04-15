@@ -10,7 +10,7 @@ Finding the optimal block decomposition of the static model...
   11 recursive block(s) and 3 simultaneous block(s).
   the largest simultaneous block has 3 equation(s)
                                  and 3 feedback variable(s).
-Computing dynamic model derivatives (order 2).
+Computing dynamic model derivatives (order 1).
 Normalizing the dynamic model...
 Normalization failed with cutoff, trying symbolic normalization...
 Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
@@ -65,5 +65,5 @@ Equation number 19: 19    :       0.000000
 [Warning: Problem in the model specification: some variables don't appear as current. Check whether this is desired.] 
 [> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('check_model', '/Applications/Dynare/6.3-arm64/matlab/check_model.m', 23)" style="font-weight:bold">check_model</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/check_model.m',23,0)">line 23</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 91)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',91,0)">line 91</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dsge.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m', 526)" style="font-weight:bold">dsge.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m',526,0)">line 526</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dsge.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m', 510)" style="font-weight:bold">dsge.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m',510,0)">line 510</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)] 

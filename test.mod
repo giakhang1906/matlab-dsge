@@ -155,5 +155,3 @@ stderr 0.01;
 end;
 
 stoch_simul(order=1,irf=20);
-
-          

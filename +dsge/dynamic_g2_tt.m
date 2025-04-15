@@ -18,10 +18,9 @@ function T = dynamic_g2_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 21);
+assert(length(T) >= 12);
 
 T = dsge.dynamic_g1_tt(T, y, x, params, steady_state, it_);
 
-T(21) = T(18)*(-((-(T(1)*(1-params(8))*params(6)*T(9)))*(y(22)*params(6)*T(9)*params(6)*T(9)+y(22)*params(6)*T(9)*params(6)*T(9))))/(y(22)*params(6)*T(9)*y(22)*params(6)*T(9)*y(22)*params(6)*T(9)*y(22)*params(6)*T(9))+T(17)*T(17)*getPowerDeriv(T(10),T(6),2);
 
 end
