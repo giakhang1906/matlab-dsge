@@ -48,21 +48,9 @@ Y_G = A_G + gamma_G * K_G(-1);
 % Production Function Non-green 
 Y_NG = gamma_NG * K_NG(-1); 
 
-% Profit Green Firm
-%pi_G = (1 - theta) * ((1/beta) - 1 + delta) * 
-%((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
-%(- r - K_G + (phi * (P_G + Y_G)) / ((phi - 1) * gamma_G * A_G));
-%(r + K_G + ((phi * (P_G + Y_G)) / ((phi-1) * gamma_G * A_G))); 
-
 % Profit green firm 
 %pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * A_G)) - r - K_G(-1));
 (gamma_G * A_G) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G(-1)) * (gamma_G * A_G));
-
-% Profit Non-green Firm
-%pi_NG = ((1/beta) - 1 + delta) * 
-%((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
-%(- r_f - K_NG + (phi * (P_NG + Y_NG)) / ((phi - 1) * gamma_NG * A_NG));
-%(r_f + K_NG + ((phi * (P_NG + Y_NG)) / ((phi-1) * gamma_NG * A_NG)));
 
 % Profit non-green firm
 pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG(-1));
