@@ -16,16 +16,37 @@ Normalization failed with cutoff, trying symbolic normalization...
 Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
-dynare_solve: starting value results in nonfinite/NaN value. Randomize initial guess...
+
+STEADY-STATE RESULTS:
+
+C     		 0
+I     		 0
+a     		 0
+w     		 0
+r     		 0
+r_f   		 0
+C_G   		 0
+C_NG  		 0
+Y_G   		 0
+Y_NG  		 0
+K_G   		 0
+K_NG  		 0
+P     		 0
+P_G   		 0
+P_NG  		 0
+pi_G  		 0
+pi_NG 		 0
+D     		 0
+A_G   		 0
 
 
 Residuals of the static equations:
 Equation number  1: 1     :       0.000000
-Equation number  2: 2     :      -0.183673
+Equation number  2: 2     :       0.000000
 Equation number  3: r     :       0.000000
-Equation number  4: 4     :      -0.400000
-Equation number  5: 5     :      -0.400000
-Equation number  6: P     :       1.000000
+Equation number  4: 4     :       0.000000
+Equation number  5: 5     :       0.000000
+Equation number  6: P     :       0.000000
 Equation number  7: a     :       0.000000
 Equation number  8: Y_G   :       0.000000
 Equation number  9: Y_NG  :       0.000000
@@ -35,9 +56,14 @@ Equation number 12: 12    :       0.000000
 Equation number 13: 13    :       0.000000
 Equation number 14: K_G   :       0.000000
 Equation number 15: K_NG  :       0.000000
-Equation number 16: 16    :      -0.333333
-Equation number 17: 17    :      -0.166667
+Equation number 16: 16    :       0.000000
+Equation number 17: 17    :       0.000000
 Equation number 18: A_G   :       0.000000
 Equation number 19: 19    :       0.000000
 
 
+[Warning: Problem in the model specification: some variables don't appear as current. Check whether this is desired.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('check_model', '/Applications/Dynare/6.3-arm64/matlab/check_model.m', 23)" style="font-weight:bold">check_model</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/check_model.m',23,0)">line 23</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 91)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',91,0)">line 91</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dsge.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m', 526)" style="font-weight:bold">dsge.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+dsge/driver.m',526,0)">line 526</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)] 

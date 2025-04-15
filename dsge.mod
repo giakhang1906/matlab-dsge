@@ -138,7 +138,7 @@ end;
 
 initval; 
 w = 1/3; 
-%A_G = 1; 
+A_G = 1; 
 P = 1; 
 end; 
 

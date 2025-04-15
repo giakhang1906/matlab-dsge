@@ -505,6 +505,7 @@ A_NG = M_.params(12);
 %
 options_.initval_file = false;
 oo_.steady_state(4) = 0.3333333333333333;
+oo_.steady_state(19) = 1;
 oo_.steady_state(13) = 1;
 if M_.exo_nbr > 0
 	oo_.exo_simul = ones(M_.maximum_lag,1)*oo_.exo_steady_state';
