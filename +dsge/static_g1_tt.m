@@ -13,11 +13,10 @@ function T = static_g1_tt(T, y, x, params)
 %   T         [#temp variables by 1]  double   vector of temporary terms
 %
 
-assert(length(T) >= 14);
+assert(length(T) >= 12);
 
 T = dsge.static_resid_tt(T, y, x, params);
 
-T(13) = (-(T(1)*(1-params(8))*params(6)*T(2)))/(y(19)*params(6)*T(2)*y(19)*params(6)*T(2))*getPowerDeriv(T(1)*(1-params(8))/(y(19)*params(6)*T(2)),T(3),1);
-T(14) = T(1)*(1-params(8))*T(13);
+T(12) = (-(T(1)*(1-params(8))*params(6)*T(7)))/(y(19)*params(6)*T(7)*y(19)*params(6)*T(7))*getPowerDeriv(T(1)*(1-params(8))/(y(19)*params(6)*T(7)),T(5),1);
 
 end

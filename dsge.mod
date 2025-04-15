@@ -40,13 +40,13 @@ C_NG - C = -phi * (P_NG - P);
 P = 1/2 * P_G + 1/2 * P_NG; 
 
 % Law of Motion for Capital
-a(+1) = delta * I + (1-delta) * a; 
+a = delta * I + (1-delta) * a(-1); 
 
 % Production Function Green 
-Y_G = A_G + gamma_G * K_G; 
+Y_G = A_G + gamma_G * K_G(-1); 
 
 % Production Function Non-green 
-Y_NG = gamma_NG * K_NG; 
+Y_NG = gamma_NG * K_NG(-1); 
 
 % Profit Green Firm
 %pi_G = (1 - theta) * ((1/beta) - 1 + delta) * 
@@ -55,7 +55,8 @@ Y_NG = gamma_NG * K_NG;
 %(r + K_G + ((phi * (P_G + Y_G)) / ((phi-1) * gamma_G * A_G))); 
 
 % Profit green firm 
-pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * A_G)) - r - K_G);
+%pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * A_G)) - r - K_G(-1));
+(gamma_G * A_G) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G(-1)) * (gamma_G * A_G));
 
 % Profit Non-green Firm
 %pi_NG = ((1/beta) - 1 + delta) * 
@@ -64,31 +65,31 @@ pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * 
 %(r_f + K_NG + ((phi * (P_NG + Y_NG)) / ((phi-1) * gamma_NG * A_NG)));
 
 % Profit non-green firm
-pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG);
+pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG(-1));
 
 % Price Green 
-P_G + Y_G = K_G + r; 
+P_G + Y_G = K_G(-1) + r; 
 
 % Price non-green
-P_NG + Y_NG = K_NG + r_f; 
+P_NG + Y_NG = K_NG(-1) + r_f; 
 
 % MPK = Rate of return green 
-K_G = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
+K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
 
 %MPK = Rate of return non-green
-K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
+K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
-K_G = w + a; 
+K_G(-1) = STEADY_STATE(w) + a(-1); 
 
 % Capital supply = capital demand 
-K_NG = 1/2 * w + a; 
+K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
 
 % Productivity
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D * ( T_v *  C_ss = ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
+D * (T_v * ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
 ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
  + T_c * ((1 - theta) * ((1/beta) - 1 + delta) * 
 ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
@@ -105,39 +106,39 @@ T_c * (pi_G * ((1 - theta) * ((1/beta) - 1 + delta) *
 ((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
 ((1/gamma_NG) - 1))) - 
 (r + K_G) * theta * ((1/beta) - 1 + delta) * 
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
+((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)));
 
 end;
 
 % Result for C_ss
-C_ss = ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
+%C_ss = ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
+%((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
 
 % Result for pi_G_ss
-pi_G_ss = (1 - theta) * ((1/beta) - 1 + delta) * 
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
-((1/gamma_G) - 1)
+%pi_G_ss = (1 - theta) * ((1/beta) - 1 + delta) * 
+%((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
+%((1/gamma_G) - 1)
 
 % Result for pi_NG_ss
-pi_NG_ss = ((1/beta) - 1 + delta) * 
-((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
-((1/gamma_NG) - 1)
+%pi_NG_ss = ((1/beta) - 1 + delta) * 
+%((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
+%((1/gamma_NG) - 1)
 
 % Result for Deficit steady state 
-D_ss = T_v *  C_ss = ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
- + 
-T_c * ((1 - theta) * ((1/beta) - 1 + delta) * 
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
-((1/gamma_G) - 1) + ((1/beta) - 1 + delta) * 
-((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
-((1/gamma_NG) - 1)) - 
-theta * ((1/beta) - 1 + delta) * 
-((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)));
+%D_ss = T_v *  C_ss = ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
+%((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
+% + 
+%T_c * ((1 - theta) * ((1/beta) - 1 + delta) * 
+% ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1))) * 
+% ((1/gamma_G) - 1) + ((1/beta) - 1 + delta) * 
+% ((((1/beta) - 1 + delta)/ (A_NG * gamma_NG * (0.5 / (1 - alpha_G))^(1/(1-phi))))^(1 / (gamma_NG - 1))) * 
+% ((1/gamma_NG) - 1)) - 
+% theta * ((1/beta) - 1 + delta) * 
+% ((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)));
 
 initval; 
 w = 1/3; 
-A_G = 1; 
+%A_G = 1; 
 P = 1; 
 end; 
 
