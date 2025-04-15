@@ -20,7 +20,7 @@ if T_flag
 end
 residual = zeros(19, 1);
     residual(1) = (0) - ((1-params(1)*(1-params(5)))*y(5));
-residual(2) = y(1)*(1/params(1)-1)/T(1)+params(5)*(y(2)-y(13))/T(1);
+    residual(2) = (y(1)*(1/params(1)-1)/T(1)+params(5)*(y(2)-y(13))/T(1)) - (y(3)+y(6)-y(13));
     residual(3) = (y(5)) - (y(6));
     residual(4) = (y(7)-y(1)) - ((-params(3))*(y(14)-y(13)));
     residual(5) = (y(8)-y(1)) - ((-params(3))*(y(15)-y(13)));
@@ -37,6 +37,6 @@ residual(2) = y(1)*(1/params(1)-1)/T(1)+params(5)*(y(2)-y(13))/T(1);
     residual(16) = (y(11)) - (y(3)+y(4));
     residual(17) = (y(12)) - (y(3)+0.5*y(4));
     residual(18) = (y(19)) - (y(19)*params(9)+x(1));
-    residual(19) = (y(18)*T(11)) - (T(8)*3*(y(6)-params(5))/(1+params(10))*params(10)*(y(1)+y(13))+params(11)*(y(16)*T(9)+y(17)*T(10))-T(8)*T(1)*(y(5)+y(11))*params(8));
+    residual(19) = (y(18)*T(10)) - (T(7)*3*(y(6)-params(5))/(1+params(10))*params(10)*(y(1)+y(13))+params(11)*(y(16)*T(8)+y(17)*T(9))-T(7)*T(1)*(y(5)+y(11))*params(8));
 
 end

@@ -6,70 +6,16 @@ Evaluating expressions...
 Computing static model derivatives (order 1).
 Normalizing the static model...
 Finding the optimal block decomposition of the static model...
-14 block(s) found:
-  11 recursive block(s) and 3 simultaneous block(s).
+13 block(s) found:
+  10 recursive block(s) and 3 simultaneous block(s).
   the largest simultaneous block has 3 equation(s)
                                  and 3 feedback variable(s).
-Computing dynamic model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
 Normalization failed with cutoff, trying symbolic normalization...
-Could not normalize the dynamic model. Variable P is not in the maximum cardinality matching.
-Preprocessing completed.
+Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
+ERROR: If the model is declared linear the second derivatives must be equal to zero.
+       The following equations have non-zero second derivatives:
+       * Eq # 10 [pi_G]
+       * Eq # 19 [19]
 Preprocessing time: 0h00m00s.
-DYNARE_SOLVE (solve_algo=2|4): number of blocks = 14
-
-STEADY-STATE RESULTS:
-
-C     		 0
-I     		 0
-a     		 0
-w     		 0
-r     		 0
-r_f   		 0
-C_G   		 0
-C_NG  		 0
-Y_G   		 0
-Y_NG  		 0
-K_G   		 0
-K_NG  		 0
-P     		 0
-P_G   		 0
-P_NG  		 0
-pi_G  		 0
-pi_NG 		 0
-D     		 0
-A_G   		 0
-
-
-Residuals of the static equations:
-Equation number  1: 1     :       0.000000
-Equation number  2: 2     :       0.000000
-Equation number  3: r     :       0.000000
-Equation number  4: 4     :       0.000000
-Equation number  5: 5     :       0.000000
-Equation number  6: P     :       0.000000
-Equation number  7: a     :       0.000000
-Equation number  8: Y_G   :       0.000000
-Equation number  9: Y_NG  :       0.000000
-Equation number 10: 10    :       0.000000
-Equation number 11: pi_NG :       0.000000
-Equation number 12: 12    :       0.000000
-Equation number 13: 13    :       0.000000
-Equation number 14: K_G   :       0.000000
-Equation number 15: K_NG  :       0.000000
-Equation number 16: 16    :       0.000000
-Equation number 17: 17    :       0.000000
-Equation number 18: A_G   :       0.000000
-Equation number 19: 19    :       0.000000
-
-
-
-STOCHASTIC_SOLVER: The Jacobian of the dynamic model contains NaN. The problem is associated with:
-
-
-Derivative of Equation 19 with respect to  Variable A_G  (initial value of A_G: 0) 
-
-STOCHASTIC_SOLVER:   The problem most often occurs, because a variable with
-STOCHASTIC_SOLVER:   exponent smaller than 0 has been initialized to 0. Taking the derivative
-STOCHASTIC_SOLVER:   and evaluating it at the steady state then results in a division by 0.
-STOCHASTIC_SOLVER:   If you are using model-local variables (# operator), check their values as well.

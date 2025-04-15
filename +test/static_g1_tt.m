@@ -13,10 +13,9 @@ function T = static_g1_tt(T, y, x, params)
 %   T         [#temp variables by 1]  double   vector of temporary terms
 %
 
-assert(length(T) >= 12);
+assert(length(T) >= 10);
 
 T = test.static_resid_tt(T, y, x, params);
 
-T(12) = (-(T(1)*(1-params(8))*params(6)*T(7)))/(y(19)*params(6)*T(7)*y(19)*params(6)*T(7))*getPowerDeriv(T(1)*(1-params(8))/(y(19)*params(6)*T(7)),T(5),1);
 
 end

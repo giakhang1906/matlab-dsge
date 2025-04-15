@@ -22,9 +22,7 @@ A_NG = 1;
 model (linear);
 
 %#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C whereve it appears.
-%# pi_g = 
-%# pi_ng =
-%#D = T_v *  C_ss / ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
+#D = T_v *  C_ss * ((r_f - delta) / (1 + T_v)) * (1/(1/3)) *  
 %((((1 - theta) * ((1/beta) - 1 + delta)) / (A_G * gamma_G * (0.5/alpha_G)^(1 / (1-phi))))^(1 / (gamma_G - 1)))
 % + 
 %T_c * ((1 - theta) * ((1/beta) - 1 + delta) * 
@@ -77,11 +75,11 @@ P_NG + Y_NG = K_NG(-1) + r_f;
 
 % MPK = Rate of return green 
 %K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
-K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
+K_G = (1 / (gamma_G - 1)) * (r - A_G - P_G); 
 
 %MPK = Rate of return non-green
 %K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
-K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
+K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
 %K_G(-1) = STEADY_STATE(w) + a(-1); 
