@@ -13,13 +13,13 @@ Finding the optimal block decomposition of the static model...
 Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
 Normalization failed with cutoff, trying symbolic normalization...
-Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
+Could not normalize the dynamic model. Variable K_NG is not in the maximum cardinality matching.
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
 [Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  1.387779e-17.] 
 [> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('evaluate_steady_state', '/Applications/Dynare/6.3-arm64/matlab/evaluate_steady_state.m', 339)" style="font-weight:bold">evaluate_steady_state</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/evaluate_steady_state.m',339,0)">line 339</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('steady', '/Applications/Dynare/6.3-arm64/matlab/steady.m', 112)" style="font-weight:bold">steady</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/steady.m',112,0)">line 112</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m', 483)" style="font-weight:bold">test.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m',483,0)">line 483</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m', 485)" style="font-weight:bold">test.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m',485,0)">line 485</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)
 ] 
 
@@ -42,7 +42,7 @@ P_G   		 0
 P_NG  		 0
 pi_G  		 0
 pi_NG 		 0
-D     		 -1.41527
+D     		 0
 A_G   		 0
 
 
@@ -71,5 +71,5 @@ Equation number 19: D     :       0.000000
 [Warning: Problem in the model specification: some variables don't appear as current. Check whether this is desired.] 
 [> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('check_model', '/Applications/Dynare/6.3-arm64/matlab/check_model.m', 23)" style="font-weight:bold">check_model</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/check_model.m',23,0)">line 23</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 91)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',91,0)">line 91</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m', 494)" style="font-weight:bold">test.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m',494,0)">line 494</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m', 496)" style="font-weight:bold">test.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test/driver.m',496,0)">line 496</a>)
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)] 

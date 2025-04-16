@@ -23,5 +23,5 @@ residual = NaN(19, 1);
     residual(16) = (y(11)) - (y(3)+y(4));
     residual(17) = (y(12)) - (y(3)+0.5*y(4));
     residual(18) = (y(19)) - (y(19)*params(9)+x(1));
-    residual(19) = (y(18)) - ((T(10)*(y(1)+y(13))+params(11)*(T(8)*y(16)+T(9)*y(17))-T(5)*params(8)*T(3))/(T(10)+params(11)*(T(8)+T(9))-T(5)*params(8)*T(3)));
+    residual(19) = (y(18)) - ((T(10)*(y(1)+y(13))+params(11)*(T(8)*y(16)+T(9)*y(17))-T(5)*params(8)*T(3)*(y(5)+y(11)))/(T(10)+params(11)*(T(8)+T(9))-T(5)*params(8)*T(3)));
 end

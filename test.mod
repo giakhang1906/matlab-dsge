@@ -106,7 +106,7 @@ K_NG(-1) = 1/2 * w + a(-1);
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss)) / D_ss; 
+D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
 
 end;
 
