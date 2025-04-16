@@ -22,8 +22,6 @@ A_NG = 1;
 model (linear);
 
 %#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C whereve it appears.
-%# pi_g = 
-%# pi_ng =
 
 #P_Gss = (0.5 / alpha_G)^(1 / (1 - phi)); 
 
@@ -106,7 +104,7 @@ K_NG(-1) = 1/2 * w + a(-1);
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - theta * ((1/beta) - 1 + delta) * K_Gss) / D_ss; 
+D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss)) / D_ss; 
 
 end;
 
