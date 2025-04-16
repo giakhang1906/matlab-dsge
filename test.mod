@@ -44,12 +44,13 @@ model (linear);
 #D_ss = (T_v * Css + T_c * (pi_Gss + pi_NGss) - theta * ((1/beta) - 1 + delta) * K_Gss); 
 
 %%Euler equation
-C(+1) - C = (1 - beta*(1 - delta)) * r(+1); 
+%C(+1) - C = (1 - beta*(1 - delta)) * r(+1); 
+C - C(-1) = (1 - beta*(1 - delta)) * r;
 
 %% Budget Constraint 
 %((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
 
-C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a + r_f) - I * delta); 
+C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
 
 %% Rate of return 
 r = r_f; 
@@ -106,7 +107,7 @@ K_NG(-1) = 1/2 * w + a(-1);
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
+D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G(-1)))) / D_ss; 
 
 end;
 

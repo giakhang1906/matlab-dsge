@@ -5,8 +5,8 @@ if nargin < 6
 end
 [T_order, T] = test.sparse.dynamic_resid_tt(y, x, params, steady_state, T_order, T);
 residual = NaN(19, 1);
-    residual(1) = (y(39)-y(20)) - ((1-params(1)*(1-params(5)))*y(43));
-    residual(2) = (y(20)) - (T(6)*(T(3)*(y(22)+y(25))-params(5)*y(21)));
+    residual(1) = (y(20)-y(1)) - ((1-params(1)*(1-params(5)))*y(24));
+    residual(2) = (y(20)) - (T(6)*(T(3)*(y(3)+y(25))-params(5)*y(21)));
     residual(3) = (y(24)) - (y(25));
     residual(4) = (y(26)-y(20)) - ((-params(3))*(y(33)-y(32)));
     residual(5) = (y(27)-y(20)) - ((-params(3))*(y(34)-y(32)));
@@ -23,5 +23,5 @@ residual = NaN(19, 1);
     residual(16) = (y(11)) - (y(3)+y(23));
     residual(17) = (y(12)) - (y(3)+0.5*y(23));
     residual(18) = (y(38)) - (params(9)*y(19)+x(1));
-    residual(19) = (y(37)) - (((y(20)+y(32))*T(14)+params(11)*(y(35)*T(12)+y(36)*T(13))-(y(24)+y(30))*params(8)*T(3)*T(10))/(T(14)+params(11)*(T(12)+T(13))-params(8)*T(3)*T(10)));
+    residual(19) = (y(37)) - (((y(20)+y(32))*T(14)+params(11)*(y(35)*T(12)+y(36)*T(13))-(y(24)+y(11))*params(8)*T(3)*T(10))/(T(14)+params(11)*(T(12)+T(13))-params(8)*T(3)*T(10)));
 end
