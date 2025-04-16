@@ -44,25 +44,30 @@ model (linear);
 #D_ss = (T_v * Css + T_c * (pi_Gss + pi_NGss) - theta * ((1/beta) - 1 + delta) * K_Gss); 
 
 %%Euler equation
-%C(+1) - C = (1 - beta*(1 - delta)) * r(+1); 
+%C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
 C - C(-1) = (1 - beta*(1 - delta)) * r;
 
 %% Budget Constraint 
 %((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
 
-C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
+%C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
+C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
 
 %% Rate of return 
-r = r_f; 
+%r = r_f; 
+r(-1) = r_f(-1); 
 
 % Consumption green 
-C_G - C = -phi * (P_G - P); 
+%C_G - C = -phi * (P_G - P); 
+C_G(-1) - C(-1) = -phi * (P_G(-1) - P(-1));
 
 % Consumption non-green 
-C_NG - C = -phi * (P_NG - P); 
+%C_NG - C = -phi * (P_NG - P); 
+C_NG(-1) - C(-1) = -phi * (P_NG(-1) - P(-1)); 
 
 %% Aggregate price 
-P = 1/2 * P_G + 1/2 * P_NG; 
+%P = 1/2 * P_G + 1/2 * P_NG; 
+P(-1) = 1/2 * P_G(-1) + 1/2 * P_NG(-1); 
 
 % Law of Motion for Capital
 a = delta * I + (1-delta) * a(-1); 
