@@ -31,7 +31,7 @@ model (linear);
 
 #K_NGss = ((((1/beta) - 1 + delta) / (A_NG * gamma_NG * P_NGss))^(1 / (gamma_NG - 1)));
 
-#Css = (((r_f - delta) / (1 + T_v)) * (1/3) * K_Gss);
+#Css = ((((1/beta) - 1) / (1 + T_v)) * (1/3) * K_Gss);
 
 #Y_Gss = ((K_Gss)^gamma_G);
 
@@ -47,7 +47,9 @@ model (linear);
 C(+1) - C = (1 - beta*(1 - delta)) * r(+1); 
 
 %% Budget Constraint 
-((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
+%((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
+
+C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a + r_f) - I * delta); 
 
 %% Rate of return 
 r = r_f; 

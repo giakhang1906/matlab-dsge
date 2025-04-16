@@ -4,7 +4,7 @@ if T_order >= 1
 end
 [T_order, T] = test.sparse.static_resid_tt(y, x, params, T_order, T);
 T_order = 1;
-if size(T, 1) < 10
-    T = [T; NaN(10 - size(T, 1), 1)];
+if size(T, 1) < 14
+    T = [T; NaN(14 - size(T, 1), 1)];
 end
 end

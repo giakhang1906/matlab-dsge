@@ -23,24 +23,24 @@ if T_flag
     T = test.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 end
 residual = zeros(19, 1);
-    residual(1) = (y(24)-y(5)) - ((1-params(1)*(1-params(5)))*y(25));
-    residual(2) = (y(5)*(1/params(1)-1)/T(1)+params(5)*(y(6)-y(17))/T(1)) - (y(7)+y(10)-y(17));
+    residual(1) = (y(22)-y(5)) - ((1-params(1)*(1-params(5)))*y(23));
+    residual(2) = (y(5)) - (T(6)*(T(3)*(y(7)+y(10))-params(5)*y(6)));
     residual(3) = (y(9)) - (y(10));
-    residual(4) = (y(11)-y(5)) - ((-params(3))*(y(18)-y(17)));
-    residual(5) = (y(12)-y(5)) - ((-params(3))*(y(19)-y(17)));
-    residual(6) = (y(17)) - (y(18)*0.5+y(19)*0.5);
+    residual(4) = (y(11)-y(5)) - ((-params(3))*(y(16)-y(15)));
+    residual(5) = (y(12)-y(5)) - ((-params(3))*(y(17)-y(15)));
+    residual(6) = (y(15)) - (0.5*y(16)+0.5*y(17));
     residual(7) = (y(7)) - (params(5)*y(6)+(1-params(5))*y(1));
-    residual(8) = (y(13)) - (y(23)+params(6)*y(2));
+    residual(8) = (y(13)) - (y(21)+params(6)*y(2));
     residual(9) = (y(14)) - (params(7)*y(3));
-    residual(10) = (y(23)*params(6)*y(20)) - (T(2)*(T(3)*(y(18)+y(13))-y(23)*params(6)*(y(9)-y(2))));
-    residual(11) = (y(21)) - (T(4)*(T(3)*(y(19)+y(14))/(params(7)*params(12))-y(10)-y(3)));
-    residual(12) = (y(18)+y(13)) - (y(9)+y(2));
-    residual(13) = (y(19)+y(14)) - (y(10)+y(3));
-    residual(14) = (y(15)) - (T(5)*(y(9)-y(23)-y(18)));
-    residual(15) = (y(16)) - (T(6)*(y(10)-y(19)));
+    residual(10) = (params(6)*y(18)) - (T(7)*(T(8)*(y(16)+y(13))-params(6)*(y(9)-y(2))));
+    residual(11) = (y(19)) - (T(9)*(T(8)*(y(17)+y(14))/(params(12)*params(7))-y(10)-y(3)));
+    residual(12) = (y(16)+y(13)) - (y(9)+y(2));
+    residual(13) = (y(17)+y(14)) - (y(10)+y(3));
+    residual(14) = (y(2)) - (T(4)*(y(9)-y(21)-y(16)));
+    residual(15) = (y(3)) - (T(5)*(y(10)-y(17)));
     residual(16) = (y(2)) - (y(1)+y(8));
     residual(17) = (y(3)) - (y(1)+0.5*y(8));
-    residual(18) = (y(23)) - (params(9)*y(4)+x(it_, 1));
-    residual(19) = (y(22)*T(10)) - (T(7)*3*(y(10)-params(5))/(1+params(10))*params(10)*(y(5)+y(17))+params(11)*(y(20)*T(8)+y(21)*T(9))-T(7)*T(1)*params(8)*(y(9)+y(15)));
+    residual(18) = (y(21)) - (params(9)*y(4)+x(it_, 1));
+    residual(19) = (y(20)) - (((y(5)+y(15))*T(14)+params(11)*(y(18)*T(12)+y(19)*T(13))-params(8)*T(3)*T(10))/(T(14)+params(11)*(T(12)+T(13))-params(8)*T(3)*T(10)));
 
 end
