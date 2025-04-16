@@ -21,7 +21,7 @@ A_NG = 1;
 
 model (linear);
 
-%#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C whereve it appears.
+%#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C wherever it appears.
 
 #P_Gss = (0.5 / alpha_G)^(1 / (1 - phi)); 
 
@@ -44,30 +44,26 @@ model (linear);
 #D_ss = (T_v * Css + T_c * (pi_Gss + pi_NGss) - theta * ((1/beta) - 1 + delta) * K_Gss); 
 
 %%Euler equation
-%C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
-C - C(-1) = (1 - beta*(1 - delta)) * r;
+C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
+%C - C(-1) = (1 - beta*(1 - delta)) * r;
 
 %% Budget Constraint 
 %((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
 
-%C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
-C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
+C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
+%C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
 
 %% Rate of return 
-%r = r_f; 
-r(-1) = r_f(-1); 
+r = r_f; 
 
 % Consumption green 
-%C_G - C = -phi * (P_G - P); 
-C_G(-1) - C(-1) = -phi * (P_G(-1) - P(-1));
+C_G - C = -phi * (P_G - P); 
 
 % Consumption non-green 
-%C_NG - C = -phi * (P_NG - P); 
-C_NG(-1) - C(-1) = -phi * (P_NG(-1) - P(-1)); 
+C_NG - C = -phi * (P_NG - P); 
 
 %% Aggregate price 
-%P = 1/2 * P_G + 1/2 * P_NG; 
-P(-1) = 1/2 * P_G(-1) + 1/2 * P_NG(-1); 
+P = 1/2 * P_G + 1/2 * P_NG;  
 
 % Law of Motion for Capital
 a = delta * I + (1-delta) * a(-1); 
@@ -101,12 +97,12 @@ K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G);
 K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
-%K_G(-1) = STEADY_STATE(w) + a(-1); 
-K_G(-1) = w + a(-1);
+K_G(-1) = STEADY_STATE(w) + a(-1); 
+%K_G(-1) = w + a(-1);
 
 % Capital supply = capital demand 
-%K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
-K_NG(-1) = 1/2 * w + a(-1);
+K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
+%K_NG(-1) = 1/2 * w + a(-1);
 
 % Productivity
 A_G = rho * A_G(-1) + EPS_G;
@@ -133,4 +129,4 @@ stderr 0.01;
 
 end;
 
-stoch_simul(order=1,irf=20);
+stoch_simul(order=2,irf=200);
