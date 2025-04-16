@@ -6,8 +6,8 @@ Evaluating expressions...
 Computing static model derivatives (order 1).
 Normalizing the static model...
 Finding the optimal block decomposition of the static model...
-13 block(s) found:
-  10 recursive block(s) and 3 simultaneous block(s).
+14 block(s) found:
+  11 recursive block(s) and 3 simultaneous block(s).
   the largest simultaneous block has 3 equation(s)
                                  and 3 feedback variable(s).
 Computing dynamic model derivatives (order 2).
@@ -16,6 +16,5 @@ Normalization failed with cutoff, trying symbolic normalization...
 Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
 ERROR: If the model is declared linear the second derivatives must be equal to zero.
        The following equations have non-zero second derivatives:
-       * Eq # 10 [pi_G]
-       * Eq # 19 [19]
+       * Eq # 19 [D]
 Preprocessing time: 0h00m00s.
