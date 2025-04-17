@@ -164,13 +164,5 @@ pi_G       0.0176   0.2867   0.0068   0.2376   0.0282
 pi_NG      0.0105   0.6297   0.1056   0.5664   0.1559
 D          0.3624   0.2986   0.3546   0.3000   0.3411
 A_G        0.3000   0.0900   0.0270   0.0081   0.0024
-[Warning: Class 'datetime' is defined in a class folder and takes precedence over a function with the same name that is earlier on the
-MATLAB path. In a future release, class 'datetime' will no longer be given precedence.
-
-<a href="matlab: matlab.internal.identifyClassPrecedenceConflicts('datetime')">Click here for the locations of the conflicting items</a>.
-<a href="matlab: helpview('matlab','AtFolderPrecedence');">Click here for guidelines to avoid this warning</a>.] 
-[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 335)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',335,0)">line 335</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test_2.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test_2/driver.m', 641)" style="font-weight:bold">test_2.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test_2/driver.m',641,0)">line 641</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)] 
-Total computing time : 0h00m20s
+Total computing time : 0h00m13s
 Note: warning(s) encountered in MATLAB/Octave code
