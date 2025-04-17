@@ -45,7 +45,7 @@ model (linear);
 
 %%Euler equation
 C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
-%C - C(-1) = (1 - beta*(1 - delta)) * r;
+%C(-1) - C(-2) = (1 - beta*(1 - delta)) * r(-1);
 
 %% Budget Constraint 
 %((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
@@ -97,12 +97,12 @@ K_G(-1) = (1 / (gamma_G - 1)) * (r - A_G - P_G);
 K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
-K_G(-1) = STEADY_STATE(w) + a(-1); 
-%K_G(-1) = w + a(-1);
+%K_G(-1) = STEADY_STATE(w) + a(-1); 
+K_G(-1) = w + a(-1);
 
 % Capital supply = capital demand 
-K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
-%K_NG(-1) = 1/2 * w + a(-1);
+%K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
+K_NG(-1) = 1/2 * w + a(-1);
 
 % Productivity
 A_G = rho * A_G(-1) + EPS_G;
@@ -112,11 +112,11 @@ D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * 
 
 end;
 
-initval; 
-w = 1/3; 
-A_G = 1; 
-P = 1; 
-end; 
+% initval; 
+% %w = 1/3; 
+% %A_G = 1; 
+% %P = 1; 
+% end; 
 
 options_.debug = 1;
 steady;

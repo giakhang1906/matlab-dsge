@@ -249,10 +249,10 @@ M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(1, 1);
 M_.params = NaN(12, 1);
 M_.endo_trends = struct('deflator', cell(19, 1), 'log_deflator', cell(19, 1), 'growth_factor', cell(19, 1), 'log_growth_factor', cell(19, 1));
-M_.NNZDerivatives = [67; 0; -1; ];
-M_.dynamic_g1_sparse_rowval = int32([2 7 16 17 8 10 12 14 16 19 9 11 13 15 17 18 1 2 4 5 19 2 7 7 3 10 12 14 19 2 3 11 13 15 4 5 8 10 12 9 11 13 4 5 6 19 4 6 10 12 14 5 6 11 13 15 10 19 11 19 19 8 14 18 1 1 18 ]);
-M_.dynamic_g1_sparse_colval = int32([3 3 3 3 11 11 11 11 11 11 12 12 12 12 12 19 20 20 20 20 20 21 21 22 24 24 24 24 24 25 25 25 25 25 26 27 28 28 28 29 29 29 32 32 32 32 33 33 33 33 33 34 34 34 34 34 35 35 36 36 37 38 38 38 39 43 58 ]);
-M_.dynamic_g1_sparse_colptr = int32([1 1 1 5 5 5 5 5 5 5 5 11 16 16 16 16 16 16 16 17 22 24 25 25 30 35 36 37 40 43 43 43 47 52 57 59 61 62 65 66 66 66 66 67 67 67 67 67 67 67 67 67 67 67 67 67 67 67 68 ]);
+M_.NNZDerivatives = [69; 0; -1; ];
+M_.dynamic_g1_sparse_rowval = int32([2 7 16 17 8 10 12 14 16 19 9 11 13 15 17 18 1 2 4 5 19 2 7 7 16 17 3 10 12 14 19 2 3 11 13 15 4 5 8 10 12 9 11 13 4 5 6 19 4 6 10 12 14 5 6 11 13 15 10 19 11 19 19 8 14 18 1 1 18 ]);
+M_.dynamic_g1_sparse_colval = int32([3 3 3 3 11 11 11 11 11 11 12 12 12 12 12 19 20 20 20 20 20 21 21 22 23 23 24 24 24 24 24 25 25 25 25 25 26 27 28 28 28 29 29 29 32 32 32 32 33 33 33 33 33 34 34 34 34 34 35 35 36 36 37 38 38 38 39 43 58 ]);
+M_.dynamic_g1_sparse_colptr = int32([1 1 1 5 5 5 5 5 5 5 5 11 16 16 16 16 16 16 16 17 22 24 25 27 32 37 38 39 42 45 45 45 49 54 59 61 63 64 67 68 68 68 68 69 69 69 69 69 69 69 69 69 69 69 69 69 69 69 70 ]);
 M_.dynamic_g2_sparse_indices = int32([]);
 M_.lhs = {
 'C(1)-C'; 
@@ -468,19 +468,6 @@ M_.params(11) = 0.4;
 T_c = M_.params(11);
 M_.params(12) = 1;
 A_NG = M_.params(12);
-%
-% INITVAL instructions
-%
-options_.initval_file = false;
-oo_.steady_state(4) = 0.3333333333333333;
-oo_.steady_state(19) = 1;
-oo_.steady_state(13) = 1;
-if M_.exo_nbr > 0
-	oo_.exo_simul = ones(M_.maximum_lag,1)*oo_.exo_steady_state';
-end
-if M_.exo_det_nbr > 0
-	oo_.exo_det_simul = ones(M_.maximum_lag,1)*oo_.exo_det_steady_state';
-end
 options_.debug = 1;
 steady;
 options_resid_ = struct();

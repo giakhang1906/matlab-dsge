@@ -21,7 +21,7 @@ A_NG = 1;
 
 model (linear);
 
-%#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C whereve it appears.
+%#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C wherever it appears.
 
 #P_Gss = (0.5 / alpha_G)^(1 / (1 - phi)); 
 
@@ -45,27 +45,25 @@ model (linear);
 
 %%Euler equation
 C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
-%C - C(-1) = (1 - beta*(1 - delta)) * r;
+%C(-1) - C(-2) = (1 - beta*(1 - delta)) * r(-1);
 
 %% Budget Constraint 
 %((C * ((1/beta) - 1)) / ((1/beta) - 1 + delta)) + ((delta * (I - P)) / ((1/beta) - 1 + delta)) = a + r_f - P; 
 
-%C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
-C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
+C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f) - I * delta); 
+%C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
 
 %% Rate of return 
 r = r_f; 
 
 % Consumption green 
-%C_G - C = -phi * (P_G - P); 
-C_G(-1) - C(-1) = -phi * (P_G(-1) - P(-1));
+C_G - C = -phi * (P_G - P); 
 
 % Consumption non-green 
-%C_NG - C = -phi * (P_NG - P); 
-C_NG(-1) - C(-1) = -phi * (P_NG(-1) - P(-1)); 
+C_NG - C = -phi * (P_NG - P); 
 
 %% Aggregate price 
-P = 1/2 * P_G + 1/2 * P_NG; 
+P = 1/2 * P_G + 1/2 * P_NG;  
 
 % Law of Motion for Capital
 a = delta * I + (1-delta) * a(-1); 
@@ -115,7 +113,7 @@ D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * 
 end;
 
 initval; 
-w = 1/3; 
+%w = 1/3; 
 A_G = 1; 
 P = 1; 
 end; 
@@ -131,4 +129,4 @@ stderr 0.01;
 
 end;
 
-stoch_simul(order=1,irf=20);
+stoch_simul(order=2,irf=200);

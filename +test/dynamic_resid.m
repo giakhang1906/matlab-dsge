@@ -38,8 +38,8 @@ residual = zeros(19, 1);
     residual(13) = (y(17)+y(14)) - (y(10)+y(3));
     residual(14) = (y(2)) - (T(4)*(y(9)-y(21)-y(16)));
     residual(15) = (y(3)) - (T(5)*(y(10)-y(17)));
-    residual(16) = (y(2)) - (y(1)+(steady_state(4)));
-    residual(17) = (y(3)) - (y(1)+0.5*(steady_state(4)));
+    residual(16) = (y(2)) - (y(1)+y(8));
+    residual(17) = (y(3)) - (y(1)+0.5*y(8));
     residual(18) = (y(21)) - (params(9)*y(4)+x(it_, 1));
     residual(19) = (y(20)) - (((y(5)+y(15))*T(14)+params(11)*(y(18)*T(12)+y(19)*T(13))-(y(9)+y(2))*params(8)*T(3)*T(10))/(T(14)+params(11)*(T(12)+T(13))-params(8)*T(3)*T(10)));
 

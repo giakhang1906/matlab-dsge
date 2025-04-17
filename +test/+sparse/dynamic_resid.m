@@ -20,8 +20,8 @@ residual = NaN(19, 1);
     residual(13) = (y(34)+y(29)) - (y(25)+y(12));
     residual(14) = (y(11)) - (T(4)*(y(24)-y(38)-y(33)));
     residual(15) = (y(12)) - (T(5)*(y(25)-y(34)));
-    residual(16) = (y(11)) - (y(3)+(steady_state(4)));
-    residual(17) = (y(12)) - (y(3)+0.5*(steady_state(4)));
+    residual(16) = (y(11)) - (y(3)+y(23));
+    residual(17) = (y(12)) - (y(3)+0.5*y(23));
     residual(18) = (y(38)) - (params(9)*y(19)+x(1));
     residual(19) = (y(37)) - (((y(20)+y(32))*T(14)+params(11)*(y(35)*T(12)+y(36)*T(13))-(y(24)+y(11))*params(8)*T(3)*T(10))/(T(14)+params(11)*(T(12)+T(13))-params(8)*T(3)*T(10)));
 end
