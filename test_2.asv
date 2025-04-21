@@ -8,7 +8,7 @@ parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG,
 
 beta = 0.99;
 %psi = 0.3; %CES utility for aggregate C
-phi = 3;
+phi = 2;
 alpha_G = 0.3;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
@@ -75,12 +75,14 @@ Y_G = A_G + gamma_G * K_G;
 Y_NG = gamma_NG * K_NG; 
 
 % Profit green firm 
+%pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * A_G)) - r - K_G(-1));
+%(gamma_G * A_G) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G(-1)) * (gamma_G * A_G));
 %(gamma_G * 1) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G) * (gamma_G * 1)); %Original one
-pi_G * pi_Gss = (P_Gss * Y_Gss) * (P_G + Y_G) - ((1 - theta) * ((1/beta) - 1 + delta) * K_Gss) * (r + K_G); 
+pi_G * pi_Gss = (P_Gss * Y_Gss) * (P_G + Y_G) - ((1 - theta) * ((1/beta) - 1 + delta) * K_Gss)*(r + K_G); 
 
 % Profit non-green firm
 %pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG(-1)); %Original one
-pi_NG = (((P_NGss * Y_NGss) * (P_NG + Y_NG)) / pi_NGss) - ((((1/beta) - 1 + delta) * K_NGss) * (r_f + K_NG)) / pi_NGss;
+pi_NG * pi_NGss = (P_NGss * Y_NGss) * (P_NG + Y_NG) - (((1/beta) - 1 + delta) * K_NGss) * (r_f + K_NG); 
 
 % Price Green 
 P_G + Y_G = K_G + r; 
