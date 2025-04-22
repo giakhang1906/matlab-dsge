@@ -1,0 +1,23 @@
+Starting Dynare (version 6.3).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 20 equation(s).
+Evaluating expressions...
+Computing static model derivatives (order 1).
+Normalizing the static model...
+Finding the optimal block decomposition of the static model...
+14 block(s) found:
+  11 recursive block(s) and 3 simultaneous block(s).
+  the largest simultaneous block has 3 equation(s)
+                                 and 3 feedback variable(s).
+Computing dynamic model derivatives (order 2).
+Normalizing the dynamic model...
+Finding the optimal block decomposition of the dynamic model...
+7 block(s) found:
+  6 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 12 equation(s)
+                                 and 9 feedback variable(s).
+ERROR: If the model is declared linear the second derivatives must be equal to zero.
+       The following equations have non-zero second derivatives:
+       * Eq # 19 [D]
+Preprocessing time: 0h00m00s.

@@ -8,8 +8,8 @@ parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG,
 
 beta = 0.99;
 %psi = 0.3; %CES utility for aggregate C
-phi = 3;
-alpha_G = 0.3;
+phi = 1.1;
+alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
 gamma_NG = 0.5; %elasticity of capital
@@ -112,11 +112,11 @@ D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * 
 
 end;
 
-% initval; 
+%initval; 
 % %w = 1/3; 
 % %A_G = 1; 
 % %P = 1; 
-% end; 
+%end; 
 
 options_.debug = 1;
 steady;
@@ -129,5 +129,5 @@ stderr 0.01;
 
 end;
 
-stoch_simul(order=2,irf=200);
-%stoch_simul;
+%stoch_simul(order=2,irf=200);
+stoch_simul;
