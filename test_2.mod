@@ -8,12 +8,13 @@ parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG,
 
 beta = 0.99;
 %psi = 0.3; %CES utility for aggregate C
-phi = 1.1;
+phi = 5;
 alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
 gamma_NG = 0.5; %elasticity of capital
-theta = 0.2;
+%theta = 0.2;
+theta = 0.5;
 rho = 0.9; 
 T_v = 0.1; 
 T_c = 0.2;

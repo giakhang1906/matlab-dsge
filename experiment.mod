@@ -1,22 +1,24 @@
 var C, I, a, w, r, r_f, C_G, C_NG, Y_G, Y_NG, K_G, K_NG, 
-    P, P_G, P_NG, pi_G, pi_NG, D, A_G, theta; %Endogenous variables 
+    P, P_G, P_NG, pi_G, pi_NG, D, A_G; %Endogenous variables 
     
-varexo EPS_G, EPS_t;       
+varexo EPS_G;       
 
 parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG, 
-           rho, T_v, T_c, A_NG, rho_theta; 
+           theta, rho, T_v, T_c, T_p, A_NG; 
 
 beta = 0.99;
 %psi = 0.3; %CES utility for aggregate C
-phi = 1.1;
+phi = 5;
 alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
 gamma_NG = 0.5; %elasticity of capital
+%theta = 0.2;
+theta = 0.2;
 rho = 0.9; 
-rho_theta = 0.9;
 T_v = 0.1; 
 T_c = 0.2;
+T_p = 0.4;
 A_NG = 1;
 
 model (linear);
@@ -41,7 +43,7 @@ model (linear);
 
 #pi_NGss = (P_NGss * Y_NGss - ((1/beta) - 1 + delta) * K_NGss);
 
-#D_ss = (T_v * Css + T_c * (pi_Gss + pi_NGss) - theta * ((1/beta) - 1 + delta) * K_Gss); 
+#D_ss = (T_v * Css + T_c * pi_Gss + T_p * pi_NGss - theta * ((1/beta) - 1 + delta) * K_Gss); 
 
 %%Euler equation
 C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
@@ -75,15 +77,15 @@ Y_G = A_G + gamma_G * K_G;
 Y_NG = gamma_NG * K_NG; 
 
 % Profit green firm 
-%pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G) / (gamma_G * A_G)) - r - K_G(-1));
-%(gamma_G * A_G) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G(-1)) * (gamma_G * A_G));
-(gamma_G * 1) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G) * (gamma_G * 1));
+%(gamma_G * 1) * pi_G = (1 / ((1/gamma_G) - 1)) * ((phi / (phi - 1)) * ((P_G + Y_G)) - (r - K_G) * (gamma_G * 1)); %Original one
+pi_G * pi_Gss = (P_Gss * Y_Gss) * (P_G + Y_G) - ((1 - theta) * ((1/beta) - 1 + delta) * K_Gss) * (r + K_G); 
 
 % Profit non-green firm
-pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG(-1));
+%pi_NG = (1 / ((1/gamma_NG) - 1)) * ((phi / (phi - 1)) * ((P_NG + Y_NG) / (gamma_NG * A_NG)) - r_f - K_NG(-1)); %Original one
+pi_NG = (((P_NGss * Y_NGss) * (P_NG + Y_NG)) / pi_NGss) - ((((1/beta) - 1 + delta) * K_NGss) * (r_f + K_NG)) / pi_NGss;
 
 % Price Green 
-P_G + Y_G = K_G + r - theta; 
+P_G + Y_G = K_G + r; 
 
 % Price non-green
 P_NG + Y_NG = K_NG + r_f; 
@@ -108,18 +110,15 @@ K_NG = 1/2 * w + a;
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
-
-% Subsidy rate
-theta = rho_theta * theta(-1) + EPS_t; 
+D = ((T_v * Css * (P + C)) + T_c * pi_G * pi_Gss + T_p * pi_NG * pi_NGss - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
 
 end;
 
-% initval; 
+%initval; 
 % %w = 1/3; 
 % %A_G = 1; 
 % %P = 1; 
-% end; 
+%end; 
 
 options_.debug = 1;
 steady;
@@ -130,9 +129,7 @@ shocks;
 var EPS_G;
 stderr 0.01;
 
-var EPS_t; 
-stderr 0.01;
-
 end;
 
-stoch_simul(order=2,irf=200);
+%stoch_simul(order=2,irf=200);
+stoch_simul;
