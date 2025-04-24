@@ -1,6 +1,6 @@
 function [y, T, residual, g1] = static_8(y, x, params, sparse_rowval, sparse_colval, sparse_colptr, T)
 residual=NaN(1, 1);
-  T(4)=(0.5/params(3))^(1/(1-params(2)));
+  T(4)=(0.65/params(3))^(1/(1-params(2)));
   T(5)=((1-params(7))*(1/params(1)-1+params(4))/(T(4)*params(5)))^(1/(params(5)-1));
   T(6)=T(4)*(T(5))^params(5);
   residual(1)=((T(6)-(1-params(7))*(1/params(1)-1+params(4))*T(5))*y(16))-(T(6)*(y(14)+y(9))-(1-params(7))*(1/params(1)-1+params(4))*T(5)*(y(5)+y(11)));

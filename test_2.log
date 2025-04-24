@@ -12,11 +12,8 @@ Finding the optimal block decomposition of the static model...
                                  and 3 feedback variable(s).
 Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
-Finding the optimal block decomposition of the dynamic model...
-7 block(s) found:
-  6 recursive block(s) and 1 simultaneous block(s).
-  the largest simultaneous block has 12 equation(s)
-                                 and 8 feedback variable(s).
+Normalization failed with cutoff, trying symbolic normalization...
+Could not normalize the dynamic model. Variable K_G is not in the maximum cardinality matching.
 Preprocessing completed.
 Preprocessing time: 0h00m00s.
 
@@ -65,3 +62,103 @@ Equation number 18: A_G   :       0.000000
 Equation number 19: D     :       0.000000
 
 
+[Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  9.316449e-22.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dyn_first_order_solver', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/dyn_first_order_solver.m', 283)" style="font-weight:bold">dyn_first_order_solver</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/dyn_first_order_solver.m',283,0)">line 283</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stochastic_solvers', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stochastic_solvers.m', 248)" style="font-weight:bold">stochastic_solvers</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stochastic_solvers.m',248,0)">line 248</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('resol', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/resol.m', 115)" style="font-weight:bold">resol</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/resol.m',115,0)">line 115</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m', 108)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/stochastic_solver/stoch_simul.m',108,0)">line 108</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test_2.driver', '/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test_2/driver.m', 482)" style="font-weight:bold">test_2.driver</a> (<a href="matlab: opentoline('/Users/khangphamgia/DynareWork/DSGE/matlab-dsge/+test_2/driver.m',482,0)">line 482</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/6.3-arm64/matlab/dynare.m', 308)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/6.3-arm64/matlab/dynare.m',308,0)">line 308</a>)
+] 
+
+MODEL SUMMARY
+
+  Number of variables:         19
+  Number of stochastic shocks: 1
+  Number of state variables:   2
+  Number of jumpers:           4
+  Number of static variables:  13
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables       EPS_G
+EPS_G        0.000100
+
+POLICY AND TRANSITION FUNCTIONS
+                                   C               I               a               w               r             r_f             C_G            C_NG             Y_G            Y_NG             K_G            K_NG               P             P_G            P_NG            pi_G           pi_NG               D             A_G
+a(-1)                     203.100455      -39.000000               0    -1648.962456      407.879286       25.355907      265.506649       87.203238     -824.481228     -412.240614    -1648.962456     -824.481228     -406.200910     -416.601942     -386.884707    -1241.083170     -799.125321     -922.863279               0
+A_G(-1)                    42.069022       -7.440861       -0.186022     -341.690516       84.956031        5.892046       57.312174       13.760311     -170.038269      -85.515640     -341.876537     -171.031279      -84.341713      -86.882238      -79.623594     -256.920507     -165.139234     -190.847664        0.900000
+EPS_G                       5.003130       -8.267624       -0.206691      356.660528     -238.571025       -4.372898      311.672421     -564.525554      179.226919       89.061787      356.453837      178.123573      -10.232558      -61.344107       84.688889      117.882812      173.750676      154.810377        1.000000
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+C              0.0000     0.0501     0.0025
+I              0.0000     0.0839     0.0070
+a              0.0000     0.0047     0.0000
+w              0.0000     3.5667    12.7211
+r              0.0000     2.3858     5.6918
+r_f            0.0000     0.0462     0.0021
+C_G            0.0000     3.1172     9.7171
+C_NG           0.0000     5.6461    31.8785
+Y_G            0.0000     1.7923     3.2123
+Y_NG           0.0000     0.8906     0.7933
+K_G            0.0000     3.5646    12.7065
+K_NG           0.0000     1.7813     3.1730
+P              0.0000     0.1027     0.0105
+P_G            0.0000     0.6137     0.3766
+P_NG           0.0000     0.8469     0.7173
+pi_G           0.0000     1.1789     1.3897
+pi_NG          0.0000     1.7375     3.0189
+D              0.0000     1.5481     2.3966
+A_G            0.0000     0.0229     0.0005
+
+
+
+MATRIX OF CORRELATIONS
+Variables          C        I        a        w        r      r_f      C_G     C_NG      Y_G     Y_NG      K_G     K_NG        P      P_G     P_NG     pi_G    pi_NG        D      A_G
+C             1.0000  -0.9777  -0.4727   0.9989  -0.9989  -0.9321   0.9997  -0.9997   0.9993   0.9988   0.9988   0.9988  -0.9990  -0.9999   0.9995   0.9988   0.9992   0.9991   0.4727
+I            -0.9777   1.0000   0.2770  -0.9864   0.9866   0.9874  -0.9823   0.9824  -0.9847  -0.9868  -0.9866  -0.9868   0.9674   0.9802  -0.9839  -0.9868  -0.9854  -0.9858  -0.2770
+a            -0.4727   0.2770   1.0000  -0.4309   0.4302   0.1215  -0.4519   0.4514  -0.4402  -0.4287  -0.4298  -0.4287   0.5114   0.4618  -0.4442  -0.4289  -0.4363  -0.4345  -1.0000
+w             0.9989  -0.9864  -0.4309   1.0000  -1.0000  -0.9481   0.9997  -0.9997   0.9999   1.0000   1.0000   1.0000  -0.9958  -0.9994   0.9999   1.0000   1.0000   1.0000   0.4309
+r            -0.9989   0.9866   0.4302  -1.0000   1.0000   0.9483  -0.9997   0.9997  -0.9999  -1.0000  -1.0000  -1.0000   0.9958   0.9994  -0.9999  -1.0000  -1.0000  -1.0000  -0.4302
+r_f          -0.9321   0.9874   0.1215  -0.9481   0.9483   1.0000  -0.9404   0.9406  -0.9447  -0.9488  -0.9485  -0.9488   0.9151   0.9365  -0.9433  -0.9488  -0.9462  -0.9468  -0.1215
+C_G           0.9997  -0.9823  -0.4519   0.9997  -0.9997  -0.9404   1.0000  -1.0000   0.9999   0.9997   0.9997   0.9997  -0.9977  -0.9999   1.0000   0.9997   0.9998   0.9998   0.4519
+C_NG         -0.9997   0.9824   0.4514  -0.9997   0.9997   0.9406  -1.0000   1.0000  -0.9999  -0.9997  -0.9997  -0.9997   0.9977   0.9999  -1.0000  -0.9997  -0.9999  -0.9998  -0.4514
+Y_G           0.9993  -0.9847  -0.4402   0.9999  -0.9999  -0.9447   0.9999  -0.9999   1.0000   0.9999   0.9999   0.9999  -0.9967  -0.9997   1.0000   0.9999   1.0000   1.0000   0.4402
+Y_NG          0.9988  -0.9868  -0.4287   1.0000  -1.0000  -0.9488   0.9997  -0.9997   0.9999   1.0000   1.0000   1.0000  -0.9956  -0.9993   0.9999   1.0000   1.0000   1.0000   0.4287
+K_G           0.9988  -0.9866  -0.4298   1.0000  -1.0000  -0.9485   0.9997  -0.9997   0.9999   1.0000   1.0000   1.0000  -0.9957  -0.9994   0.9999   1.0000   1.0000   1.0000   0.4298
+K_NG          0.9988  -0.9868  -0.4287   1.0000  -1.0000  -0.9488   0.9997  -0.9997   0.9999   1.0000   1.0000   1.0000  -0.9956  -0.9993   0.9999   1.0000   1.0000   1.0000   0.4287
+P            -0.9990   0.9674   0.5114  -0.9958   0.9958   0.9151  -0.9977   0.9977  -0.9967  -0.9956  -0.9957  -0.9956   1.0000   0.9984  -0.9971  -0.9956  -0.9964  -0.9962  -0.5114
+P_G          -0.9999   0.9802   0.4618  -0.9994   0.9994   0.9365  -0.9999   0.9999  -0.9997  -0.9993  -0.9994  -0.9993   0.9984   1.0000  -0.9998  -0.9993  -0.9996  -0.9995  -0.4618
+P_NG          0.9995  -0.9839  -0.4442   0.9999  -0.9999  -0.9433   1.0000  -1.0000   1.0000   0.9999   0.9999   0.9999  -0.9971  -0.9998   1.0000   0.9999   1.0000   0.9999   0.4442
+pi_G          0.9988  -0.9868  -0.4289   1.0000  -1.0000  -0.9488   0.9997  -0.9997   0.9999   1.0000   1.0000   1.0000  -0.9956  -0.9993   0.9999   1.0000   1.0000   1.0000   0.4289
+pi_NG         0.9992  -0.9854  -0.4363   1.0000  -1.0000  -0.9462   0.9998  -0.9999   1.0000   1.0000   1.0000   1.0000  -0.9964  -0.9996   1.0000   1.0000   1.0000   1.0000   0.4363
+D             0.9991  -0.9858  -0.4345   1.0000  -1.0000  -0.9468   0.9998  -0.9998   1.0000   1.0000   1.0000   1.0000  -0.9962  -0.9995   0.9999   1.0000   1.0000   1.0000   0.4345
+A_G           0.4727  -0.2770  -1.0000   0.4309  -0.4302  -0.1215   0.4519  -0.4514   0.4402   0.4287   0.4298   0.4287  -0.5114  -0.4618   0.4442   0.4289   0.4363   0.4345   1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order           1        2        3        4        5
+C          0.0195   0.0176   0.0158   0.0142   0.0128
+I         -0.0470  -0.0423  -0.0380  -0.0342  -0.0308
+a          0.9000   0.8100   0.7290   0.6561   0.5905
+w         -0.0024  -0.0022  -0.0019  -0.0017  -0.0016
+r         -0.0027  -0.0024  -0.0022  -0.0020  -0.0018
+r_f       -0.0393  -0.0354  -0.0318  -0.0286  -0.0258
+C_G        0.0081   0.0073   0.0066   0.0059   0.0053
+C_NG       0.0078   0.0070   0.0063   0.0057   0.0051
+Y_G        0.0021   0.0019   0.0017   0.0015   0.0014
+Y_NG      -0.0034  -0.0031  -0.0028  -0.0025  -0.0022
+K_G       -0.0029  -0.0026  -0.0024  -0.0021  -0.0019
+K_NG      -0.0034  -0.0031  -0.0028  -0.0025  -0.0022
+P          0.0438   0.0395   0.0355   0.0320   0.0288
+P_G        0.0134   0.0120   0.0108   0.0097   0.0088
+P_NG       0.0041   0.0037   0.0033   0.0030   0.0027
+pi_G      -0.0033  -0.0030  -0.0027  -0.0024  -0.0022
+pi_NG      0.0002   0.0002   0.0002   0.0001   0.0001
+D         -0.0006  -0.0006  -0.0005  -0.0005  -0.0004
+A_G        0.9000   0.8100   0.7290   0.6561   0.5905
+Total computing time : 0h00m08s
+Note: warning(s) encountered in MATLAB/Octave code
