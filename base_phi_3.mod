@@ -9,7 +9,7 @@ parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG,
 beta = 0.99;
 psi = 2; %CRRA parameter, common value
 %phi = 1.5;
-phi = 1.5000001;
+phi = 3;
 alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
