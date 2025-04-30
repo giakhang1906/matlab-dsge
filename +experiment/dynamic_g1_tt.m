@@ -23,6 +23,6 @@ assert(length(T) >= 14);
 T = experiment.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
 T(13) = (-(T(11)/T(12)));
-T(14) = (-((-(params(7)*T(3)*T(7)))/T(12)));
+T(14) = (-((-(params(8)*T(3)*T(7)))/T(12)));
 
 end

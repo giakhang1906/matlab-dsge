@@ -9,7 +9,7 @@ parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG,
 beta = 0.99;
 psi = 2; %CRRA parameter, common value
 %phi = 1.5;
-phi = 6;
+phi = 1.50001;
 alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
@@ -99,21 +99,24 @@ K_G = (1 / (gamma_G - 1)) * (r - A_G - P_G);
 
 %MPK = Rate of return non-green
 %K_NG(-1) = (1 / (gamma_NG - 1)) * (r_f - P_NG);
-K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
+K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG); 
 
 % Capital supply = Capital demand 
 %K_G(-1) = STEADY_STATE(w) + a(-1); 
-K_G = w + a;
+%K_G = w + a; original case 
+(1 / (gamma_G - 1)) * (r - A_G - P_G) = w + a;
 
 % Capital supply = capital demand 
 %K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
-K_NG = 1/2 * w + a;
+%K_NG = 1/2 * w + a; original case
+(1 / (gamma_NG - 1)) * (r_f - P_NG) = 1/2 * w + a;
 
 % Productivity
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
+D = ((T_v * Css * (P + C)) + T_c * (pi_G * pi_Gss + pi_NG * pi_NGss) - 
+(theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
 
 end;
 

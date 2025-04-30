@@ -18,6 +18,6 @@ assert(length(T) >= 14);
 T = experiment.static_resid_tt(T, y, x, params);
 
 T(13) = (-(T(10)/T(11)));
-T(14) = (-((-(T(5)*params(7)*T(3)))/T(11)));
+T(14) = (-((-(T(5)*params(8)*T(3)))/T(11)));
 
 end

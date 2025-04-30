@@ -3,12 +3,12 @@ var C, I, a, w, r, r_f, C_G, C_NG, Y_G, Y_NG, K_G, K_NG,
     
 varexo EPS_G;       
 
-parameters beta, phi, alpha_G, delta, gamma_G, gamma_NG, 
+parameters beta, psi, phi, alpha_G, delta, gamma_G, gamma_NG, 
            theta, rho, T_v, T_c, T_p, A_NG; 
 
 beta = 0.99;
-%psi = 0.3; %CES utility for aggregate C
-phi = 5;
+psi = 2; %CES utility for aggregate C
+phi = 3;
 alpha_G = 0.185;
 delta = 0.025;
 gamma_G = 0.5; %elasticity of capital
@@ -18,16 +18,18 @@ theta = 0.2;
 rho = 0.9; 
 T_v = 0.1; 
 T_c = 0.2;
-T_p = 0.4;
+T_p = 0.3;
 A_NG = 1;
 
 model (linear);
 
 %#Gc = C(+1) - C; % The hashtag is declares local expressions. In this example, Gc will be replaced with C(+1) - C wherever it appears.
 
-#P_Gss = (0.5 / alpha_G)^(1 / (1 - phi)); 
+%#P_Gss = (0.5 / alpha_G)^(1 / (1 - phi)); original
+#P_Gss = (0.65 / alpha_G)^(1 / (1 - phi)); 
 
-#P_NGss = (0.5 / (1-alpha_G))^(1 / (1-phi));
+%#P_NGss = (0.5 / (1-alpha_G))^(1 / (1-phi)); original
+#P_NGss = (0.35 / (1-alpha_G))^(1 / (1-phi));
 
 #K_Gss = ((((1 - theta) * ((1/beta) - 1 + delta)) / (1 * gamma_G * P_Gss))^(1 / (gamma_G - 1)));
 
@@ -46,7 +48,7 @@ model (linear);
 #D_ss = (T_v * Css + T_c * pi_Gss + T_p * pi_NGss - theta * ((1/beta) - 1 + delta) * K_Gss); 
 
 %%Euler equation
-C(+1) - C = (1 - beta*(1 - delta)) * r(+1); %This does not print the model summary 
+psi * (C(+1) - C) + P(+1) - P - beta * ((1/beta) - 1 + delta) * r_f(+1) = 0;  %This does not print the model summary 
 %C(-1) - C(-2) = (1 - beta*(1 - delta)) * r(-1);
 
 %% Budget Constraint 
@@ -56,7 +58,7 @@ C = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a + r_f) - I * del
 %C(-1) = ((1 + T_v) / ((1/beta) - 1)) * (((1/beta) - 1 + delta) * (a(-1) + r_f(-1)) - I(-1) * delta); 
 
 %% Rate of return 
-r = r_f; 
+r(+1) = r_f(+1); 
 
 % Consumption green 
 C_G - C = -phi * (P_G - P); 
@@ -65,7 +67,7 @@ C_G - C = -phi * (P_G - P);
 C_NG - C = -phi * (P_NG - P); 
 
 %% Aggregate price 
-P = 1/2 * P_G + 1/2 * P_NG;  
+P = 0.65 * P_G + 0.35 * P_NG;  
 
 % Law of Motion for Capital
 a = delta * I + (1-delta) * a(-1); 
@@ -100,17 +102,18 @@ K_NG = (1 / (gamma_NG - 1)) * (r_f - P_NG);
 
 % Capital supply = Capital demand 
 %K_G(-1) = STEADY_STATE(w) + a(-1); 
-K_G = w + a;
+(1 / (gamma_G - 1)) * (r - A_G - P_G) = w + a;
 
 % Capital supply = capital demand 
 %K_NG(-1) = 1/2 * STEADY_STATE(w) + a(-1); 
-K_NG = 1/2 * w + a;
+(1 / (gamma_NG - 1)) * (r_f - P_NG) = 1/2 * w + a;
 
 % Productivity
 A_G = rho * A_G(-1) + EPS_G;
 
 % Government Deficit 
-D = ((T_v * Css * (P + C)) + T_c * pi_G * pi_Gss + T_p * pi_NG * pi_NGss - (theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
+D = ((T_v * Css * (P + C)) + T_c * pi_G * pi_Gss + T_p * pi_NG * pi_NGss - 
+(theta * ((1/beta) - 1 + delta) * K_Gss * (r + K_G))) / D_ss; 
 
 end;
 
